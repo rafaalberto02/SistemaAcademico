@@ -2,8 +2,8 @@ package Model;
 
 public class Matricula {
 
-    private Aluno aluno;
-    private Disciplina disciplina;
+    private int numAluno;
+    private int codDisciplina;
     private int nota1;
     private int nota2;
     private int exame;
@@ -12,29 +12,29 @@ public class Matricula {
     public Matricula() {
     }
 
-    public Matricula(Aluno aluno, Disciplina disciplina, int nota1, int nota2, int exame, int faltas) {
-        this.aluno = aluno;
-        this.disciplina = disciplina;
+    public Matricula(int numAluno, int codDisciplina, int nota1, int nota2, int exame, int faltas) {
+        this.numAluno = numAluno;
+        this.codDisciplina = codDisciplina;
         this.nota1 = nota1;
         this.nota2 = nota2;
         this.exame = exame;
         this.faltas = faltas;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public int getNumAluno() {
+        return numAluno;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setNumAluno(int numAluno) {
+        this.numAluno = numAluno;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public int getCodDisciplina() {
+        return codDisciplina;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    public void setCodDisciplina(int codDisciplina) {
+        this.codDisciplina = codDisciplina;
     }
 
     public int getNota1() {
@@ -71,7 +71,7 @@ public class Matricula {
 
     @Override
     public String toString() {
-        return "Matricula [aluno=" + aluno + ", disciplina=" + disciplina + ", nota1=" + nota1 + ", nota2=" + nota2
+        return "Matricula [aluno=" + numAluno + ", disciplina=" + codDisciplina + ", nota1=" + nota1 + ", nota2=" + nota2
                 + ", exame=" + exame + ", faltas=" + faltas + "]";
     }
 
