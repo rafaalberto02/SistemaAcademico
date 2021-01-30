@@ -2,8 +2,8 @@ package View.Login;
 
 import Controller.UsuarioController;
 import Model.Usuario;
-import View.Coordenador.MenuOpcoesCoordernador;
-import View.Secretaria.MenuOpcoesSecretaria;
+import View.Menus.MenuOpcoesCoordernador;
+import View.Menus.MenuOpcoesSecretaria;
 import View.Sobre.JanelaSobre;
 import javax.swing.JOptionPane;
 

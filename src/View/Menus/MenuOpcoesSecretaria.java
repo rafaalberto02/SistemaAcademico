@@ -1,7 +1,5 @@
-package View.Coordenador;
+package View.Menus;
 
-import Controller.TurmaController;
-import Model.Turma;
 import View.ManterDisciplinas.JanelaEditarDisciplina;
 import View.ManterDisciplinas.JanelaCadastrarDisciplina;
 import View.ManterDisciplinas.JanelaConsultarDisciplina;
@@ -12,12 +10,10 @@ import View.ManterUsuarios.JanelaConsultarUsuario;
 import View.ManterUsuarios.JanelaDeletarUsuario;
 import View.ManterUsuarios.JanelaEditarUsuario;
 import View.ManterUsuarios.JanelaListarUsuarios;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class MenuOpcoesCoordernador extends javax.swing.JFrame {
+public class MenuOpcoesSecretaria extends javax.swing.JFrame {
 
-    public MenuOpcoesCoordernador() {
+    public MenuOpcoesSecretaria() {
         initComponents();
     }
 
@@ -26,32 +22,94 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem2 = new javax.swing.JMenuItem();
+        jPanelOpcoes = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuAlunos = new javax.swing.JMenu();
+        jMenuItemAdicionarUsuario = new javax.swing.JMenuItem();
+        jMenuItemListarUsuarios = new javax.swing.JMenuItem();
+        jMenuItemEditarUsuario = new javax.swing.JMenuItem();
+        jMenuItemConsultarUsuario = new javax.swing.JMenuItem();
+        jMenuItemExcluirUsuario = new javax.swing.JMenuItem();
         jMenuDisciplinas = new javax.swing.JMenu();
+        jMenuItemAlterarDisciplina = new javax.swing.JMenuItem();
         jMenuItemCadastrarDisciplina = new javax.swing.JMenuItem();
         jMenuItemConsultarDisciplina = new javax.swing.JMenuItem();
-        jMenuItemEditarDisciplina = new javax.swing.JMenuItem();
         jMenuItemExcluirDisciplina = new javax.swing.JMenuItem();
         jMenuItemListarDisciplina = new javax.swing.JMenuItem();
-        jMenuAlunos = new javax.swing.JMenu();
-        jMenuItemCadastrarUsuario = new javax.swing.JMenuItem();
-        jMenuItemConsultarUsuario = new javax.swing.JMenuItem();
-        jMenuItemEditarUsuario = new javax.swing.JMenuItem();
-        jMenuItemExcluirUsuario = new javax.swing.JMenuItem();
-        jMenuItemListarUsuarios = new javax.swing.JMenuItem();
-        jMenuTurma = new javax.swing.JMenu();
-        jMenuItemAbrirTurma = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        javax.swing.GroupLayout jPanelOpcoesLayout = new javax.swing.GroupLayout(jPanelOpcoes);
+        jPanelOpcoes.setLayout(jPanelOpcoesLayout);
+        jPanelOpcoesLayout.setHorizontalGroup(
+            jPanelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+        jPanelOpcoesLayout.setVerticalGroup(
+            jPanelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 446, Short.MAX_VALUE)
+        );
+
         jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel1.setText("MENU COORDENADOR");
+        jLabel1.setText("MENU SECRETARIA");
+
+        jMenuAlunos.setText("Usuarios");
+
+        jMenuItemAdicionarUsuario.setText("Adicionar Usuario");
+        jMenuItemAdicionarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAdicionarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuAlunos.add(jMenuItemAdicionarUsuario);
+
+        jMenuItemListarUsuarios.setText("Listar Usuarios");
+        jMenuItemListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListarUsuariosActionPerformed(evt);
+            }
+        });
+        jMenuAlunos.add(jMenuItemListarUsuarios);
+
+        jMenuItemEditarUsuario.setText("Editar Usuario");
+        jMenuItemEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuAlunos.add(jMenuItemEditarUsuario);
+
+        jMenuItemConsultarUsuario.setText("Consultar Usuario");
+        jMenuItemConsultarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConsultarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuAlunos.add(jMenuItemConsultarUsuario);
+
+        jMenuItemExcluirUsuario.setText("Excluir Usuario");
+        jMenuItemExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExcluirUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuAlunos.add(jMenuItemExcluirUsuario);
+
+        jMenuBar1.add(jMenuAlunos);
 
         jMenuDisciplinas.setText("Disciplinas");
+
+        jMenuItemAlterarDisciplina.setText("Alterar Disciplina");
+        jMenuItemAlterarDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlterarDisciplinaActionPerformed(evt);
+            }
+        });
+        jMenuDisciplinas.add(jMenuItemAlterarDisciplina);
 
         jMenuItemCadastrarDisciplina.setText("Cadastrar Disciplina");
         jMenuItemCadastrarDisciplina.addActionListener(new java.awt.event.ActionListener() {
@@ -68,14 +126,6 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
             }
         });
         jMenuDisciplinas.add(jMenuItemConsultarDisciplina);
-
-        jMenuItemEditarDisciplina.setText("Editar Disciplina");
-        jMenuItemEditarDisciplina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEditarDisciplinaActionPerformed(evt);
-            }
-        });
-        jMenuDisciplinas.add(jMenuItemEditarDisciplina);
 
         jMenuItemExcluirDisciplina.setText("Excluir Disciplina");
         jMenuItemExcluirDisciplina.addActionListener(new java.awt.event.ActionListener() {
@@ -95,62 +145,6 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuDisciplinas);
 
-        jMenuAlunos.setText("Usuarios");
-
-        jMenuItemCadastrarUsuario.setText("Cadastrar Usuario");
-        jMenuItemCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCadastrarUsuarioActionPerformed(evt);
-            }
-        });
-        jMenuAlunos.add(jMenuItemCadastrarUsuario);
-
-        jMenuItemConsultarUsuario.setText("Consultar Usuario");
-        jMenuItemConsultarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemConsultarUsuarioActionPerformed(evt);
-            }
-        });
-        jMenuAlunos.add(jMenuItemConsultarUsuario);
-
-        jMenuItemEditarUsuario.setText("Editar Usuario");
-        jMenuItemEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEditarUsuarioActionPerformed(evt);
-            }
-        });
-        jMenuAlunos.add(jMenuItemEditarUsuario);
-
-        jMenuItemExcluirUsuario.setText("Excluir Usuario");
-        jMenuItemExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemExcluirUsuarioActionPerformed(evt);
-            }
-        });
-        jMenuAlunos.add(jMenuItemExcluirUsuario);
-
-        jMenuItemListarUsuarios.setText("Listar Usuarios");
-        jMenuItemListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemListarUsuariosActionPerformed(evt);
-            }
-        });
-        jMenuAlunos.add(jMenuItemListarUsuarios);
-
-        jMenuBar1.add(jMenuAlunos);
-
-        jMenuTurma.setText("Turma");
-
-        jMenuItemAbrirTurma.setText("Abrir Turma");
-        jMenuItemAbrirTurma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAbrirTurmaActionPerformed(evt);
-            }
-        });
-        jMenuTurma.add(jMenuItemAbrirTurma);
-
-        jMenuBar1.add(jMenuTurma);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,16 +152,21 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(232, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(227, 227, 227))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel1)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,9 +177,9 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
         new JanelaListarUsuarios().setVisible(true);
     }//GEN-LAST:event_jMenuItemListarUsuariosActionPerformed
 
-    private void jMenuItemCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarUsuarioActionPerformed
+    private void jMenuItemAdicionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdicionarUsuarioActionPerformed
         new JanelaCadastrarUsuario(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_jMenuItemCadastrarUsuarioActionPerformed
+    }//GEN-LAST:event_jMenuItemAdicionarUsuarioActionPerformed
 
     private void jMenuItemEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarUsuarioActionPerformed
         new JanelaEditarUsuario(this, rootPaneCheckingEnabled).setVisible(true);
@@ -194,9 +193,9 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
         new JanelaDeletarUsuario(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jMenuItemExcluirUsuarioActionPerformed
 
-    private void jMenuItemEditarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarDisciplinaActionPerformed
+    private void jMenuItemAlterarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlterarDisciplinaActionPerformed
         new JanelaEditarDisciplina(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_jMenuItemEditarDisciplinaActionPerformed
+    }//GEN-LAST:event_jMenuItemAlterarDisciplinaActionPerformed
 
     private void jMenuItemCadastrarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarDisciplinaActionPerformed
         new JanelaCadastrarDisciplina(this, rootPaneCheckingEnabled).setVisible(true);
@@ -214,10 +213,6 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
         new JanelaListarDisciplinas().setVisible(true);
     }//GEN-LAST:event_jMenuItemListarDisciplinaActionPerformed
 
-    private void jMenuItemAbrirTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirTurmaActionPerformed
-        TurmaController.abrirTurma(new Turma());
-    }//GEN-LAST:event_jMenuItemAbrirTurmaActionPerformed
-
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -231,19 +226,19 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuOpcoesCoordernador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuOpcoesSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuOpcoesCoordernador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuOpcoesSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuOpcoesCoordernador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuOpcoesSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuOpcoesCoordernador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuOpcoesSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(() -> {
-            new MenuOpcoesCoordernador().setVisible(true);
+            new MenuOpcoesSecretaria().setVisible(true);
         });
     }
 
@@ -253,17 +248,16 @@ public class MenuOpcoesCoordernador extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuDisciplinas;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItemAbrirTurma;
+    private javax.swing.JMenuItem jMenuItemAdicionarUsuario;
+    private javax.swing.JMenuItem jMenuItemAlterarDisciplina;
     private javax.swing.JMenuItem jMenuItemCadastrarDisciplina;
-    private javax.swing.JMenuItem jMenuItemCadastrarUsuario;
     private javax.swing.JMenuItem jMenuItemConsultarDisciplina;
     private javax.swing.JMenuItem jMenuItemConsultarUsuario;
-    private javax.swing.JMenuItem jMenuItemEditarDisciplina;
     private javax.swing.JMenuItem jMenuItemEditarUsuario;
     private javax.swing.JMenuItem jMenuItemExcluirDisciplina;
     private javax.swing.JMenuItem jMenuItemExcluirUsuario;
     private javax.swing.JMenuItem jMenuItemListarDisciplina;
     private javax.swing.JMenuItem jMenuItemListarUsuarios;
-    private javax.swing.JMenu jMenuTurma;
+    private javax.swing.JPanel jPanelOpcoes;
     // End of variables declaration//GEN-END:variables
 }
