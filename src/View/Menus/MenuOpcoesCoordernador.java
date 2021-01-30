@@ -2,18 +2,8 @@ package View.Menus;
 
 import Controller.TurmaController;
 import Model.Turma;
-import View.ManterDisciplinas.JanelaEditarDisciplina;
-import View.ManterDisciplinas.JanelaCadastrarDisciplina;
-import View.ManterDisciplinas.JanelaConsultarDisciplina;
-import View.ManterDisciplinas.JanelaExcluirDisciplina;
-import View.ManterDisciplinas.JanelaListarDisciplinas;
-import View.ManterUsuarios.JanelaCadastrarUsuario;
-import View.ManterUsuarios.JanelaConsultarUsuario;
-import View.ManterUsuarios.JanelaDeletarUsuario;
-import View.ManterUsuarios.JanelaEditarUsuario;
-import View.ManterUsuarios.JanelaListarUsuarios;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import View.ManterDisciplinas.*;
+import View.ManterUsuarios.*;
 
 public class MenuOpcoesCoordernador extends javax.swing.JFrame {
 

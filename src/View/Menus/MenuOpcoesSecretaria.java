@@ -1,15 +1,7 @@
 package View.Menus;
 
-import View.ManterDisciplinas.JanelaEditarDisciplina;
-import View.ManterDisciplinas.JanelaCadastrarDisciplina;
-import View.ManterDisciplinas.JanelaConsultarDisciplina;
-import View.ManterDisciplinas.JanelaExcluirDisciplina;
-import View.ManterDisciplinas.JanelaListarDisciplinas;
-import View.ManterUsuarios.JanelaCadastrarUsuario;
-import View.ManterUsuarios.JanelaConsultarUsuario;
-import View.ManterUsuarios.JanelaDeletarUsuario;
-import View.ManterUsuarios.JanelaEditarUsuario;
-import View.ManterUsuarios.JanelaListarUsuarios;
+import View.ManterDisciplinas.*;
+import View.ManterUsuarios.*;
 
 public class MenuOpcoesSecretaria extends javax.swing.JFrame {
 
