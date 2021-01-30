@@ -2,8 +2,7 @@ package View.Login;
 
 import Controller.UsuarioController;
 import Model.Usuario;
-import View.Menus.MenuOpcoesCoordernador;
-import View.Menus.MenuOpcoesSecretaria;
+import View.Menus.*;
 import View.Sobre.JanelaSobre;
 import javax.swing.JOptionPane;
 
@@ -231,6 +230,9 @@ public class JanelaLogin extends javax.swing.JFrame {
         } else if (usuario.getPerfil().equalsIgnoreCase("coordenador") || usuario.getPerfil().equalsIgnoreCase("coordenadora")) {
             this.setVisible(false);
             new MenuOpcoesCoordernador().setVisible(true);
+        } else if (usuario.getPerfil().equalsIgnoreCase("aluno") || usuario.getPerfil().equalsIgnoreCase("aluna")) {
+            this.setVisible(false);
+            new MenuOpcoesAluno(usuario).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Em construcao");
         }
