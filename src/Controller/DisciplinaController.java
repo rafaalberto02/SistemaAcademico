@@ -13,8 +13,12 @@ public class DisciplinaController {
     public static Disciplina pesquisarPorCodigo(int codigo) {
         return DisciplinaDao.pesquisar(codigo);
     }
-    
-    public static boolean alterar(Disciplina disciplina){
+
+    public static List<Disciplina> pesquisarPorNome(String nome) {
+        return DisciplinaDao.pesquisarPorNome(nome);
+    }
+
+    public static boolean alterar(Disciplina disciplina) {
         return DisciplinaDao.alterar(disciplina);
     }
 

@@ -86,6 +86,30 @@ public class DisciplinaDao {
         }
     }
 
+    public static List<Disciplina> pesquisarPorNome(String nome) {
+        DisciplinaDao.connection = ConnectionFactory.getConnection();
+        String SQLQuery = "select * from Disciplina where nome like %?%";
+
+        List<Disciplina> disciplinas = new ArrayList();
+        try {
+
+            stmt = connection.prepareStatement(SQLQuery);
+            stmt.setString(1, nome);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                disciplinas.add(criarObjetoDiscuplina(rs));
+            }
+
+            fecharConexoes();
+            return disciplinas;
+        } catch (SQLException ex) {
+            Logger.getLogger(DisciplinaDao.class.getName()).log(Level.SEVERE, null, ex);
+            fecharConexoes();
+            return disciplinas;
+        }
+    }
+
     public static List<Disciplina> listar() {
         DisciplinaDao.connection = ConnectionFactory.getConnection();
         String SQLQuery = "select * from Disciplina";
