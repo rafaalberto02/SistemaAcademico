@@ -24,4 +24,8 @@ public class ProfessorController {
         return professores;
     }
 
+    public static Professor pesquisar(int numero) {
+        return ProfessorDao.pesquisar(numero);
+    }
+
 }
