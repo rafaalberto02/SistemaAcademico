@@ -12,6 +12,11 @@ public class Matricula {
     public Matricula() {
     }
 
+    public Matricula(int numAluno, int codDisciplina) {
+        this.numAluno = numAluno;
+        this.codDisciplina = codDisciplina;
+    }
+
     public Matricula(int numAluno, int codDisciplina, int nota1, int nota2, int exame, int faltas) {
         this.numAluno = numAluno;
         this.codDisciplina = codDisciplina;
