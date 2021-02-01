@@ -6,4 +6,4 @@
 * Note que as interfaces foram criadas utilizando as ferramentas do _NetBeans_ para facilitar e agilizar o processo
 
 ### Requisitos:
-* É necessário a inserção do [MysqlConnector/J](https://dev.mysql.com/downloads/connector/j/) dentro da pasta /lib
+* É necessário a inserção do [MysqlConnector/J](https://dev.mysql.com/downloads/connector/j/) dentro da pasta /lib (Caso a pasta não exista, crie a mesma na raiz do projeto)
