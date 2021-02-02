@@ -47,26 +47,32 @@ public class TurmaController {
         if (!filtro.getDisciplina().isBlank()) {
             disciplinas = DisciplinaController.pesquisarPorNome(filtro.getDisciplina());
 
+            for (int i = turmas.size() - 1; i >= 0; i--) {
+
+                boolean contem = false;
+
+                for (Disciplina disciplina : disciplinas) {
+                    contem = false;
+                    if (turmas.get(i).getcodDisciplina() == disciplina.getCodigo()) {
+                        contem = true;
+                        break;
+                    }
+                }
+
+                if (!contem) {
+                    turmas.remove(i);
+                }
+            }
+
         }
+
+        System.out.println(disciplinas);
 
         for (int i = 0; i < turmas.size(); i++) {
 
-            boolean contem = false;
-
-            if (disciplinas.size() > 0) {
-                for (Disciplina disciplina : disciplinas) {
-                    if (disciplina.getCodigo() == turmas.get(i).getcodDisciplina()) {
-                        contem = true;
-                    }
-                }
-            } else {
-                contem = true;
-            }
-            
-            if (!contem
-                    || filtro.getSemestre() > 0 && turmas.get(i).getSemestre() != filtro.getSemestre()
+            if (filtro.getSemestre() > 0 && turmas.get(i).getSemestre() != filtro.getSemestre()
                     || filtro.getAno() > 0 && turmas.get(i).getAno() != filtro.getAno()) {
-                turmas.remove(i);
+                turmas.remove(turmas.get(i));
             }
 
         }
