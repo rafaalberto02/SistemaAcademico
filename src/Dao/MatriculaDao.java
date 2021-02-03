@@ -71,6 +71,31 @@ public class MatriculaDao {
         }
     }
 
+    public static List<Matricula> pesquisarPorDisciplina(int codDisciplina) {
+        MatriculaDao.connection = ConnectionFactory.getConnection();
+        String SQLQuery = "select * from Matricula where codDisciplina = ?";
+
+        try {
+            List<Matricula> matriculas = new ArrayList();
+
+            stmt = connection.prepareStatement(SQLQuery);
+            stmt.setInt(1, codDisciplina);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                matriculas.add(criarObjetoMatricula(rs));
+            }
+
+            fecharConexoes();
+            return matriculas;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MatriculaDao.class.getName()).log(Level.SEVERE, null, ex);
+            fecharConexoes();
+            return null;
+        }
+    }
+
     public static List<Matricula> listar() {
         MatriculaDao.connection = ConnectionFactory.getConnection();
         String SQLQuery = "select * from Matricula";
