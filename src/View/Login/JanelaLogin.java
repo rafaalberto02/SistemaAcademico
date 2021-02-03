@@ -233,6 +233,9 @@ public class JanelaLogin extends javax.swing.JFrame {
         } else if (usuario.getPerfil().equalsIgnoreCase("aluno") || usuario.getPerfil().equalsIgnoreCase("aluna")) {
             this.setVisible(false);
             new MenuOpcoesAluno(usuario).setVisible(true);
+        } else if (usuario.getPerfil().equalsIgnoreCase("professor") || usuario.getPerfil().equalsIgnoreCase("professora")) {
+            this.setVisible(false);
+            new MenuOpcoesProfessor().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Em construcao");
         }
