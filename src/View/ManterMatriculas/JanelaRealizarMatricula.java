@@ -4,7 +4,7 @@ import Controller.DisciplinaController;
 import Controller.MatriculaController;
 import Controller.TurmaController;
 import Controller.UsuarioController;
-import Model.Filtro;
+import Model.FiltroTurmaDisciplina;
 import Model.Matricula;
 import Model.Turma;
 import Model.Usuario;
@@ -236,7 +236,7 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
         int semestre = paraNumero(jTextFieldSemestre.getText());
         int ano = paraNumero(jTextFieldAno.getText());
 
-        Filtro filtro = new Filtro(disciplina, semestre, ano);
+        FiltroTurmaDisciplina filtro = new FiltroTurmaDisciplina(disciplina, semestre, ano);
 
         listar(filtro);
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
@@ -300,7 +300,7 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSemestre;
     // End of variables declaration//GEN-END:variables
 
-    private void listar(Filtro filtro) {
+    private void listar(FiltroTurmaDisciplina filtro) {
         DefaultTableModel tableModel = (DefaultTableModel) jTableListarTurmas.getModel();
         tableModel.setRowCount(0);
 
