@@ -155,7 +155,7 @@ public class JanelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void MenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSobreActionPerformed
-        new JanelaSobre(this, true).setVisible(true);
+        new JanelaSobre().setVisible(true);
     }//GEN-LAST:event_MenuSobreActionPerformed
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
@@ -224,12 +224,9 @@ public class JanelaLogin extends javax.swing.JFrame {
     }
 
     private void verificaTelaSeguinte(Usuario usuario) {
-        if (usuario.getPerfil().equalsIgnoreCase("secretaria")) {
+        if (usuario.getPerfil().equalsIgnoreCase("coordenador") || usuario.getPerfil().equalsIgnoreCase("coordenadora") || usuario.getPerfil().equalsIgnoreCase("secretaria")) {
             this.setVisible(false);
-            new MenuOpcoesSecretaria().setVisible(true);
-        } else if (usuario.getPerfil().equalsIgnoreCase("coordenador") || usuario.getPerfil().equalsIgnoreCase("coordenadora")) {
-            this.setVisible(false);
-            new MenuOpcoesCoordernador().setVisible(true);
+            new MenuOpcoesSecretariaCoordernador(usuario).setVisible(true);
         } else if (usuario.getPerfil().equalsIgnoreCase("aluno") || usuario.getPerfil().equalsIgnoreCase("aluna")) {
             this.setVisible(false);
             new MenuOpcoesAluno(usuario).setVisible(true);
