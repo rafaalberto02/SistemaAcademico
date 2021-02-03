@@ -2,7 +2,7 @@ package Controller;
 
 import Dao.TurmaDao;
 import Model.Disciplina;
-import Model.Filtro;
+import Model.FiltroTurmaDisciplina;
 import Model.Turma;
 import View.ManterTurmas.AbrirTurma.JanelaListarDisciplinasDisponiveis;
 import View.ManterTurmas.AbrirTurma.JanelaListarProfessoresDisponiveis;
@@ -39,16 +39,17 @@ public class TurmaController {
         return false;
     }
 
-    public static List<Turma> listar(Filtro filtro) {
+    public static List<Turma> listar(FiltroTurmaDisciplina filtro) {
         List<Turma> turmas = TurmaDao.listar();
 
         List<Disciplina> disciplinas = new ArrayList<>();
 
-        if (!filtro.getDisciplina().isBlank()) {
-            disciplinas = DisciplinaController.pesquisarPorNome(filtro.getDisciplina());
+        if (!filtro.getNomeDisciplina().isBlank()) {
+            disciplinas = DisciplinaController.pesquisarPorNome(filtro.getNomeDisciplina());
+        }
 
-            for (int i = turmas.size() - 1; i >= 0; i--) {
-
+        for (int i = turmas.size() - 1; i >= 0; i--) {
+            if (!filtro.getNomeDisciplina().isBlank()) {
                 boolean contem = false;
 
                 for (Disciplina disciplina : disciplinas) {
@@ -64,20 +65,17 @@ public class TurmaController {
                 }
             }
 
-        }
-
-        System.out.println(disciplinas);
-
-        for (int i = 0; i < turmas.size(); i++) {
-
             if (filtro.getSemestre() > 0 && turmas.get(i).getSemestre() != filtro.getSemestre()
-                    || filtro.getAno() > 0 && turmas.get(i).getAno() != filtro.getAno()) {
-                turmas.remove(turmas.get(i));
+                    || filtro.getAno() > 0 && turmas.get(i).getAno() != filtro.getAno()
+                    || filtro.getIdTurma() > 0 && turmas.get(i).getId() != filtro.getIdTurma()) {
+                turmas.remove(i);
             }
-
         }
 
         return turmas;
     }
 
+    public static Turma pesquisar(int id) {
+        return TurmaDao.pesquisar(id);
+    }
 }
