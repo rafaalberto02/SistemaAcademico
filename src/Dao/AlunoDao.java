@@ -52,7 +52,7 @@ public class AlunoDao {
             if (rs.next()) {
                 alunoRetorno = criarObjetoAluno(rs);
             }
-
+            
             fecharConexoes();
 
             return alunoRetorno;

@@ -5,6 +5,7 @@ import Model.Turma;
 import Model.Usuario;
 import View.ManterDisciplinas.*;
 import View.ManterUsuarios.*;
+import javax.swing.JFrame;
 
 public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
 
@@ -173,36 +174,41 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoPressionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoPressionadoActionPerformed
-       
-        //Disciplina
-        if (evt.getSource() == jMenuItemCadastrarDisciplina) {
-            new JanelaCadastrarDisciplina(this, rootPaneCheckingEnabled).setVisible(true);
-        } else if (evt.getSource() == jMenuItemConsultarDisciplina) {
-            new JanelaConsultarDisciplina(this, rootPaneCheckingEnabled).setVisible(true);
-        } else if (evt.getSource() == jMenuItemEditarDisciplina) {
-            new JanelaEditarDisciplina(this, rootPaneCheckingEnabled).setVisible(true);
-        } else if (evt.getSource() == jMenuItemExcluirDisciplina) {
-            new JanelaExcluirDisciplina(this, rootPaneCheckingEnabled).setVisible(true);
-        } else if (evt.getSource() == jMenuItemListarDisciplinas) {
-            new JanelaListarDisciplinas().setVisible(true);
-        }
-
-        //Usuario
-        if (evt.getSource() == jMenuItemCadastrarUsuario) {
-            new JanelaCadastrarUsuario().setVisible(true);
-        } else if (evt.getSource() == jMenuItemConsultarUsuario) {
-            new JanelaConsultarUsuario().setVisible(true);
-        } else if (evt.getSource() == jMenuItemEditarUsuario) {
-            new JanelaEditarUsuario(this, rootPaneCheckingEnabled).setVisible(true);
-        } else if (evt.getSource() == jMenuItemExcluirUsuario) {
-            new JanelaExcluirUsuario(this, rootPaneCheckingEnabled).setVisible(true);
-        } else if (evt.getSource() == jMenuItemListarUsuarios) {
-            new JanelaListarUsuarios().setVisible(true);
-        }
 
         //Turma
         if (evt.getSource() == jMenuItemAbrirTurma) {
             TurmaController.abrirTurma(new Turma());
+        } else {
+
+            JFrame frame = null;
+
+            //Disciplina
+            if (evt.getSource() == jMenuItemCadastrarDisciplina) {
+                frame = new JanelaCadastrarDisciplina();
+            } else if (evt.getSource() == jMenuItemConsultarDisciplina) {
+                frame = new JanelaConsultarDisciplina();
+            } else if (evt.getSource() == jMenuItemEditarDisciplina) {
+                frame = new JanelaEditarDisciplina();
+            } else if (evt.getSource() == jMenuItemExcluirDisciplina) {
+                frame = new JanelaExcluirDisciplina();
+            } else if (evt.getSource() == jMenuItemListarDisciplinas) {
+                frame = new JanelaListarDisciplinas();
+            }
+
+            //Usuario
+            if (evt.getSource() == jMenuItemCadastrarUsuario) {
+                frame = new JanelaCadastrarUsuario();
+            } else if (evt.getSource() == jMenuItemConsultarUsuario) {
+                frame = new JanelaConsultarUsuario();
+            } else if (evt.getSource() == jMenuItemEditarUsuario) {
+                frame = new JanelaEditarUsuario();
+            } else if (evt.getSource() == jMenuItemExcluirUsuario) {
+                frame = new JanelaExcluirUsuario();
+            } else if (evt.getSource() == jMenuItemListarUsuarios) {
+                frame = new JanelaListarUsuarios();
+            }
+            
+            frame.setVisible(true);
         }
 
     }//GEN-LAST:event_BotaoPressionadoActionPerformed

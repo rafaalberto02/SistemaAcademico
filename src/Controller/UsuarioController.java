@@ -87,7 +87,7 @@ public class UsuarioController {
         for (int i = 0; i < usuarios.size(); i++) {
 
             Usuario usuario = usuarios.get(i);
-
+            
             if (usuarios.get(i).getPerfil().equalsIgnoreCase("aluno")) {
                 String curso = AlunoDao.pesquisar(usuario.getNumero()).getCurso();
                 usuarios.set(i, new Aluno(curso, usuario));

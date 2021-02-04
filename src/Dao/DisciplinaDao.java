@@ -88,13 +88,13 @@ public class DisciplinaDao {
 
     public static List<Disciplina> pesquisarPorNome(String nome) {
         DisciplinaDao.connection = ConnectionFactory.getConnection();
-        String SQLQuery = "select * from Disciplina where nome like %?%";
+        String SQLQuery = "select * from Disciplina where nome like ?";
 
         List<Disciplina> disciplinas = new ArrayList();
         try {
 
             stmt = connection.prepareStatement(SQLQuery);
-            stmt.setString(1, nome);
+            stmt.setString(1, "%" + nome + "%");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
