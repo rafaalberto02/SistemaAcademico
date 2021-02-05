@@ -244,9 +244,9 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
     private void jButtonMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMatricularActionPerformed
         if (jTableListarTurmas.getSelectedRow() != -1) {
             int linha = jTableListarTurmas.getSelectedRow();
-            int idDisciplina = (int) jTableListarTurmas.getValueAt(linha, 0);
+            int idTurma = (int) jTableListarTurmas.getValueAt(linha, 0);
 
-            Matricula matricula = new Matricula(usuario.getNumero(), idDisciplina);
+            Matricula matricula = new Matricula(usuario.getNumero(), idTurma);
             
             matricular(matricula);
         } else {
@@ -275,7 +275,9 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
         tableModel.setRowCount(0);
 
         List<Turma> turmas = TurmaController.listar(filtro);
-
+        
+            System.out.println(turmas);
+        
         turmas.forEach(turma -> {
             tableModel.addRow(adicionarLinha(turma));
         });

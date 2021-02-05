@@ -1,11 +1,15 @@
 package View.Menus;
 
+import Model.Usuario;
 import View.ManterNotas.JanelaListarTurmas;
 
 public class MenuOpcoesProfessor extends javax.swing.JFrame {
 
-    public MenuOpcoesProfessor() {
+    private Usuario usuario;
+
+    public MenuOpcoesProfessor(Usuario usuario) {
         initComponents();
+        this.usuario = usuario;
     }
 
     @SuppressWarnings("unchecked")
@@ -79,9 +83,9 @@ public class MenuOpcoesProfessor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemLancarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLancarNotasActionPerformed
-        new JanelaListarTurmas().setVisible(true);
+        new JanelaListarTurmas(usuario).setVisible(true);
     }//GEN-LAST:event_jMenuItemLancarNotasActionPerformed
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;

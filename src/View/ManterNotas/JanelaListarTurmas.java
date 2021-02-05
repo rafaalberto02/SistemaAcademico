@@ -4,6 +4,7 @@ import Controller.DisciplinaController;
 import Controller.TurmaController;
 import Model.FiltroTurmaDisciplina;
 import Model.Turma;
+import Model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -11,8 +12,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class JanelaListarTurmas extends javax.swing.JFrame {
 
-    public JanelaListarTurmas() {
+    private Usuario usuario;
+
+    public JanelaListarTurmas(Usuario usuario) {
         initComponents();
+        this.usuario = usuario;
     }
 
     @SuppressWarnings("unchecked")
@@ -249,8 +253,9 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
         int semestre = paraNumero(jTextFieldSemestre.getText());
         int ano = paraNumero(jTextFieldAno.getText());
         int turma = paraNumero(jTextFieldTurma.getText());
+        int numProfessor = usuario.getNumero();
 
-        FiltroTurmaDisciplina filtro = new FiltroTurmaDisciplina(disciplina, semestre, ano, turma);
+        FiltroTurmaDisciplina filtro = new FiltroTurmaDisciplina(disciplina, semestre, ano, turma, numProfessor);
 
         listar(filtro);
     }//GEN-LAST:event_jButtonPesquisarActionPerformed

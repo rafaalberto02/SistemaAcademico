@@ -233,7 +233,7 @@ public class JanelaLogin extends javax.swing.JFrame {
         } else if (usuario.getPerfil().equalsIgnoreCase("aluno") || usuario.getPerfil().equalsIgnoreCase("aluna")) {
             frame = new MenuOpcoesAluno(usuario);
         } else if (usuario.getPerfil().equalsIgnoreCase("professor") || usuario.getPerfil().equalsIgnoreCase("professora")) {
-            frame = new MenuOpcoesProfessor();
+            frame = new MenuOpcoesProfessor(usuario);
         } else {
             JOptionPane.showMessageDialog(null, "Em construcao");
             this.dispose();

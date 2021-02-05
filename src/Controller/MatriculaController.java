@@ -10,12 +10,12 @@ public class MatriculaController {
         return MatriculaDao.inserir(matricula);
     }
 
-    public static List<Matricula> pesquisar(int codDisciplina) {
-        return MatriculaDao.pesquisarPorDisciplina(codDisciplina);
+    public static List<Matricula> pesquisar(int idTurma) {
+        return MatriculaDao.pesquisarPorTurma(idTurma);
     }
 
-    public static Matricula pesquisar(int numAluno, int codDisciplina) {
-        return MatriculaDao.pesquisar(numAluno, codDisciplina);
+    public static Matricula pesquisar(int numAluno, int idTurma) {
+        return MatriculaDao.pesquisar(numAluno, idTurma);
     }
 
     public static boolean alterar(Matricula matricula) {

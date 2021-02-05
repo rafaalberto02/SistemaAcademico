@@ -151,7 +151,7 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) jTableListarAlunos.getModel();
         tableModel.setRowCount(0);
 
-        List<Matricula> matriculas = MatriculaController.pesquisar(turma.getcodDisciplina());
+        List<Matricula> matriculas = MatriculaController.pesquisar(turma.getId());
 
         matriculas.forEach(matricula -> {
             tableModel.addRow(adicionarLinha(matricula));

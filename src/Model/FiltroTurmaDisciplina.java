@@ -6,6 +6,7 @@ public class FiltroTurmaDisciplina {
     private int semestre;
     private int ano;
     private int idTurma;
+    private int numProfessor;
 
     public FiltroTurmaDisciplina() {
     }
@@ -14,13 +15,15 @@ public class FiltroTurmaDisciplina {
         this.nomeDisciplina = disciplina;
         this.semestre = semestre;
         this.ano = ano;
+        this.ano = ano;
     }
 
-    public FiltroTurmaDisciplina(String disciplina, int semestre, int ano, int turma) {
+    public FiltroTurmaDisciplina(String disciplina, int semestre, int ano, int turma, int numProfessor) {
         this.nomeDisciplina = disciplina;
         this.semestre = semestre;
         this.ano = ano;
         this.idTurma = turma;
+        this.numProfessor = numProfessor;
     }
 
     public String getNomeDisciplina() {
@@ -53,6 +56,14 @@ public class FiltroTurmaDisciplina {
 
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
+    }
+
+    public int getNumProfessor() {
+        return numProfessor;
+    }
+
+    public void setNumProfessor(int numProfessor) {
+        this.numProfessor = numProfessor;
     }
 
 }
