@@ -1,4 +1,4 @@
-package View.ManterNotas;
+package View.ManterDiario;
 
 import Controller.DisciplinaController;
 import Controller.TurmaController;
@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class JanelaListarTurmas extends javax.swing.JFrame {
 
-    private Usuario usuario;
+    private final Usuario usuario;
 
     public JanelaListarTurmas(Usuario usuario) {
         initComponents();
@@ -177,7 +177,7 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel1)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -1,4 +1,4 @@
-package View.ManterNotas;
+package View.ManterDiario;
 
 import Controller.MatriculaController;
 import Controller.UsuarioController;

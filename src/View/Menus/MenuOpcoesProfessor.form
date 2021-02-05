@@ -11,15 +11,15 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenuMatricula">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Notas"/>
+            <Property name="text" type="java.lang.String" value="Diario"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemLancarNotas">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemManterDiario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lan&#xe7;ar Notas"/>
+                <Property name="text" type="java.lang.String" value="Manter Diario"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemLancarNotasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemManterDiarioActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

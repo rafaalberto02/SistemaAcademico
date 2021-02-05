@@ -1,7 +1,7 @@
 package View.Menus;
 
 import Model.Usuario;
-import View.ManterNotas.JanelaListarTurmas;
+import View.ManterDiario.JanelaListarTurmas;
 
 public class MenuOpcoesProfessor extends javax.swing.JFrame {
 
@@ -21,7 +21,7 @@ public class MenuOpcoesProfessor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuMatricula = new javax.swing.JMenu();
-        jMenuItemLancarNotas = new javax.swing.JMenuItem();
+        jMenuItemManterDiario = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -42,15 +42,15 @@ public class MenuOpcoesProfessor extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel1.setText("MENU PROFESSOR");
 
-        jMenuMatricula.setText("Notas");
+        jMenuMatricula.setText("Diario");
 
-        jMenuItemLancarNotas.setText("Lançar Notas");
-        jMenuItemLancarNotas.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemManterDiario.setText("Manter Diario");
+        jMenuItemManterDiario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemLancarNotasActionPerformed(evt);
+                jMenuItemManterDiarioActionPerformed(evt);
             }
         });
-        jMenuMatricula.add(jMenuItemLancarNotas);
+        jMenuMatricula.add(jMenuItemManterDiario);
 
         jMenuBar1.add(jMenuMatricula);
 
@@ -82,15 +82,15 @@ public class MenuOpcoesProfessor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemLancarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLancarNotasActionPerformed
+    private void jMenuItemManterDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManterDiarioActionPerformed
         new JanelaListarTurmas(usuario).setVisible(true);
-    }//GEN-LAST:event_jMenuItemLancarNotasActionPerformed
+    }//GEN-LAST:event_jMenuItemManterDiarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItemLancarNotas;
+    private javax.swing.JMenuItem jMenuItemManterDiario;
     private javax.swing.JMenu jMenuMatricula;
     private javax.swing.JPanel jPanelOpcoes;
     // End of variables declaration//GEN-END:variables
