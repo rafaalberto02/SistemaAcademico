@@ -4,12 +4,15 @@ import Controller.DisciplinaController;
 import Controller.MatriculaController;
 import Controller.TurmaController;
 import Controller.UsuarioController;
+import Exceptions.LimiteDeAlunosAtingido;
 import Model.FiltroTurmaDisciplina;
 import Model.Matricula;
 import Model.Turma;
 import Model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -305,10 +308,15 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
     }
 
     private void matricular(Matricula matricula) {
-        if(MatriculaController.inserir(matricula)){
-            JOptionPane.showMessageDialog(null, "Aluno matriculado com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao matricular aluno");
+        try {
+            if(MatriculaController.inserir(matricula)){
+                JOptionPane.showMessageDialog(null, "Aluno matriculado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocorreu um erro ao matricular aluno");
+            }
+        } catch (LimiteDeAlunosAtingido ex) {
+            Logger.getLogger(JanelaRealizarMatricula.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Essa turma está completamente cheia");
         }
     }
 }

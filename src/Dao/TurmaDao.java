@@ -131,6 +131,29 @@ public class TurmaDao {
         }
     }
 
+    public static int quantidadeDeAlunos(int idTurma) {
+        TurmaDao.connection = ConnectionFactory.getConnection();
+        String SQLQuery = "SELECT id, count(*) as numAlunos from Turma "
+                + "INNER JOIN Matricula "
+                + "on Turma.id = Matricula.idTurma and Matricula.idTurma = ? ";
+
+        try {
+            stmt = connection.prepareStatement(SQLQuery);
+            stmt.setInt(1, idTurma);
+            rs = stmt.executeQuery();
+
+            rs.next();
+            int quantidade = rs.getInt("numAlunos");
+
+            fecharConexoes();
+            return quantidade;
+        } catch (SQLException ex) {
+            Logger.getLogger(TurmaDao.class.getName()).log(Level.SEVERE, null, ex);
+            fecharConexoes();
+            return 0;
+        }
+    }
+
     private static void fecharConexoes() {
         try {
             if (stmt != null) {

@@ -1,12 +1,18 @@
 package Controller;
 
 import Dao.MatriculaDao;
+import Exceptions.LimiteDeAlunosAtingido;
 import Model.Matricula;
 import java.util.List;
 
 public class MatriculaController {
 
-    public static boolean inserir(Matricula matricula) {
+    public static boolean inserir(Matricula matricula) throws LimiteDeAlunosAtingido {
+
+        if (TurmaController.quantidadeDeAlunos(matricula.getIdturma()) >= 50) {
+            throw new LimiteDeAlunosAtingido();
+        }
+
         return MatriculaDao.inserir(matricula);
     }
 

@@ -68,7 +68,7 @@ public class TurmaController {
             if (filtro.getSemestre() > 0 && turmas.get(i).getSemestre() != filtro.getSemestre()
                     || filtro.getAno() > 0 && turmas.get(i).getAno() != filtro.getAno()
                     || filtro.getIdTurma() > 0 && turmas.get(i).getId() != filtro.getIdTurma()
-                    || filtro.getNumProfessor()> 0 && turmas.get(i).getNumProfessor() != filtro.getNumProfessor()) {
+                    || filtro.getNumProfessor() > 0 && turmas.get(i).getNumProfessor() != filtro.getNumProfessor()) {
                 turmas.remove(i);
             }
         }
@@ -78,5 +78,9 @@ public class TurmaController {
 
     public static Turma pesquisar(int id) {
         return TurmaDao.pesquisar(id);
+    }
+
+    public static int quantidadeDeAlunos(int idTurma) {
+        return TurmaDao.quantidadeDeAlunos(idTurma);
     }
 }
