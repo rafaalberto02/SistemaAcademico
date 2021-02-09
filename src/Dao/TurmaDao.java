@@ -19,7 +19,7 @@ public class TurmaDao {
 
     public static boolean inserir(Turma turma) {
         TurmaDao.connection = ConnectionFactory.getConnection();
-        String SQLQuery = "insert into Turma values (?, ?, ?, ?, ?)";
+        String SQLQuery = "insert into Turma values (?, ?, ?, ?, ?, ?)";
 
         try {
             stmt = connection.prepareStatement(SQLQuery);
@@ -27,8 +27,9 @@ public class TurmaDao {
             stmt.setInt(1, turma.getId());
             stmt.setInt(2, turma.getSemestre());
             stmt.setInt(3, turma.getAno());
-            stmt.setInt(4, turma.getNumProfessor());
-            stmt.setInt(5, turma.getcodDisciplina());
+            stmt.setBoolean(4, turma.isAtiva());
+            stmt.setInt(5, turma.getNumProfessor());
+            stmt.setInt(6, turma.getCodDisciplina());
 
             stmt.execute();
             fecharConexoes();
@@ -43,16 +44,17 @@ public class TurmaDao {
 
     public static boolean alterar(Turma turma) {
         TurmaDao.connection = ConnectionFactory.getConnection();
-        String SQLQuery = "update Turma set semestre = ?, ano = ?, numProfessor = ?, codDisciplina = ? where id = ?";
+        String SQLQuery = "update Turma set semestre = ?, ano = ?, ativa = ?, numProfessor = ?, codDisciplina = ? where id = ?";
 
         try {
             stmt = connection.prepareStatement(SQLQuery);
 
             stmt.setInt(1, turma.getSemestre());
             stmt.setInt(2, turma.getAno());
-            stmt.setInt(3, turma.getNumProfessor());
-            stmt.setInt(4, turma.getcodDisciplina());
-            stmt.setInt(5, turma.getId());
+            stmt.setBoolean(3, turma.isAtiva());
+            stmt.setInt(4, turma.getNumProfessor());
+            stmt.setInt(5, turma.getCodDisciplina());
+            stmt.setInt(6, turma.getId());
 
             stmt.execute();
 
@@ -171,7 +173,14 @@ public class TurmaDao {
     }
 
     private static Turma criarObjetoTurma(ResultSet rs) throws SQLException {
-        return new Turma(rs.getInt("id"), rs.getInt("semestre"), rs.getInt("ano"), rs.getInt("numProfessor"), rs.getInt("codDisciplina"));
+        return new Turma(
+                rs.getInt("id"),
+                rs.getInt("semestre"),
+                rs.getInt("ano"),
+                rs.getBoolean("ativa"),
+                rs.getInt("numProfessor"),
+                rs.getInt("codDisciplina")
+        );
     }
 
 }

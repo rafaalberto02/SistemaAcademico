@@ -250,7 +250,7 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
             int idTurma = (int) jTableListarTurmas.getValueAt(linha, 0);
 
             Matricula matricula = new Matricula(usuario.getNumero(), idTurma);
-            
+
             matricular(matricula);
         } else {
             JOptionPane.showMessageDialog(null, "E necessario selecionar uma disciplina da lista");
@@ -278,9 +278,7 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
         tableModel.setRowCount(0);
 
         List<Turma> turmas = TurmaController.listar(filtro);
-        
-            System.out.println(turmas);
-        
+
         turmas.forEach(turma -> {
             tableModel.addRow(adicionarLinha(turma));
         });
@@ -292,7 +290,7 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
         linha.add(turma.getId());
         linha.add(turma.getSemestre());
         linha.add(turma.getAno());
-        linha.add(DisciplinaController.pesquisarPorCodigo(turma.getcodDisciplina()).getNome());
+        linha.add(DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome());
         linha.add(UsuarioController.pesquisar(turma.getNumProfessor()).getNome());
 
         return linha.toArray();
@@ -309,7 +307,7 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
 
     private void matricular(Matricula matricula) {
         try {
-            if(MatriculaController.inserir(matricula)){
+            if (MatriculaController.inserir(matricula)) {
                 JOptionPane.showMessageDialog(null, "Aluno matriculado com sucesso!");
             } else {
                 JOptionPane.showMessageDialog(null, "Ocorreu um erro ao matricular aluno");

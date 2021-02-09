@@ -8,6 +8,7 @@ public class Matricula {
     private int nota2;
     private int exame;
     private int faltas;
+    private boolean aprovado;
 
     public Matricula() {
     }
@@ -17,13 +18,14 @@ public class Matricula {
         this.idturma = idTurma;
     }
 
-    public Matricula(int numAluno, int idTurma, int nota1, int nota2, int exame, int faltas) {
+    public Matricula(int numAluno, int idTurma, int nota1, int nota2, int exame, int faltas, boolean aprovado) {
         this.numAluno = numAluno;
         this.idturma = idTurma;
         this.nota1 = nota1;
         this.nota2 = nota2;
         this.exame = exame;
         this.faltas = faltas;
+        this.aprovado = aprovado;
     }
 
     public int getNumAluno() {
@@ -74,10 +76,16 @@ public class Matricula {
         this.faltas = faltas;
     }
 
-    @Override
-    public String toString() {
-        return "Matricula [aluno=" + numAluno + ", disciplina=" + idturma + ", nota1=" + nota1 + ", nota2=" + nota2
-                + ", exame=" + exame + ", faltas=" + faltas + "]";
+    public boolean isAprovado() {
+        return aprovado;
     }
 
+    public void setAprovado(boolean aprovado) {
+        this.aprovado = aprovado;
+    }
+
+    @Override
+    public String toString() {
+        return "Matricula{" + "numAluno=" + numAluno + ", idturma=" + idturma + ", nota1=" + nota1 + ", nota2=" + nota2 + ", exame=" + exame + ", faltas=" + faltas + ", aprovado=" + aprovado + '}';
+    }
 }

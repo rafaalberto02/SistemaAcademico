@@ -115,7 +115,7 @@ public class JanelaListarDisciplinasDisponiveis extends javax.swing.JFrame {
             int linha = jTableListarDisciplinas.getSelectedRow();
             int codDisciplina = (int) jTableListarDisciplinas.getValueAt(linha, 0);
 
-            turma.setcodDisciplina(codDisciplina);
+            turma.setCodDisciplina(codDisciplina);
             TurmaController.abrirTurma(turma);
             this.dispose();
 

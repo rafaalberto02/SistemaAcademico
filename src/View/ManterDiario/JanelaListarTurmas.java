@@ -317,7 +317,7 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
         linha.add(turma.getId());
         linha.add(turma.getSemestre());
         linha.add(turma.getAno());
-        linha.add(DisciplinaController.pesquisarPorCodigo(turma.getcodDisciplina()).getNome());
+        linha.add(DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome());
 
         return linha.toArray();
     }

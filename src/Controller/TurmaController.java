@@ -14,7 +14,7 @@ public class TurmaController {
 
     public static boolean abrirTurma(Turma turma) {
 
-        if (turma.getcodDisciplina() > 0) {
+        if (turma.getCodDisciplina() > 0) {
 
             if (turma.getNumProfessor() > 0) {
 
@@ -22,6 +22,7 @@ public class TurmaController {
                         || turma.getAno() > 0
                         || turma.getSemestre() > 0) {
 
+                    turma.setAtiva(true);
                     return TurmaDao.inserir(turma);
 
                 } else {
@@ -54,7 +55,7 @@ public class TurmaController {
 
                 for (Disciplina disciplina : disciplinas) {
                     contem = false;
-                    if (turmas.get(i).getcodDisciplina() == disciplina.getCodigo()) {
+                    if (turmas.get(i).getCodDisciplina() == disciplina.getCodigo()) {
                         contem = true;
                         break;
                     }
@@ -68,7 +69,8 @@ public class TurmaController {
             if (filtro.getSemestre() > 0 && turmas.get(i).getSemestre() != filtro.getSemestre()
                     || filtro.getAno() > 0 && turmas.get(i).getAno() != filtro.getAno()
                     || filtro.getIdTurma() > 0 && turmas.get(i).getId() != filtro.getIdTurma()
-                    || filtro.getNumProfessor() > 0 && turmas.get(i).getNumProfessor() != filtro.getNumProfessor()) {
+                    || filtro.getNumProfessor() > 0 && turmas.get(i).getNumProfessor() != filtro.getNumProfessor()
+                    || !turmas.get(i).isAtiva()) {
                 turmas.remove(i);
             }
         }

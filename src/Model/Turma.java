@@ -7,6 +7,7 @@ public class Turma {
     private int ano;
     private int numProfessor;
     private int codDisciplina;
+    private boolean ativa;
 
     public Turma() {
     }
@@ -17,12 +18,13 @@ public class Turma {
         this.ano = ano;
     }
 
-    public Turma(int id, int semestre, int ano, int numProfessor, int codDisciplina) {
+    public Turma(int id, int semestre, int ano, boolean ativa, int numProfessor, int codDisciplina) {
         this.id = id;
         this.semestre = semestre;
         this.ano = ano;
         this.numProfessor = numProfessor;
         this.codDisciplina = codDisciplina;
+        this.ativa = ativa;
     }
 
     public int getId() {
@@ -57,18 +59,25 @@ public class Turma {
         this.numProfessor = numProfessor;
     }
 
-    public int getcodDisciplina() {
+    public int getCodDisciplina() {
         return codDisciplina;
     }
 
-    public void setcodDisciplina(int codDisciplina) {
+    public void setCodDisciplina(int codDisciplina) {
         this.codDisciplina = codDisciplina;
+    }
+
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
     }
 
     @Override
     public String toString() {
-        return "Turma [id=" + id + ", semestre=" + semestre + ", ano=" + ano + ", professor=" + numProfessor
-                + ", codDisciplina=" + codDisciplina + "]";
+        return "Turma{" + "id=" + id + ", semestre=" + semestre + ", ano=" + ano + ", numProfessor=" + numProfessor + ", codDisciplina=" + codDisciplina + ", ativa=" + ativa + '}';
     }
 
 }

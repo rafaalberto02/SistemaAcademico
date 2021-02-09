@@ -44,6 +44,7 @@ create table Turma(
 	ano int,
 	numProfessor int not null,
 	codDisciplina int not null,
+        ativa boolean,
 	primary key(id),
 	
 	constraint FK_Turma_Professor
@@ -61,6 +62,7 @@ create table Matricula(
 	nota2 int,
 	exame int,
 	faltas int,
+        aprovado boolean,
 
 	constraint PK_Matricula
 		primary key(numAluno, idTurma),
