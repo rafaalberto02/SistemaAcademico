@@ -1,13 +1,13 @@
-package View.ConsultaNotas;
+package View.ConsultarFaltas;
 
 import Controller.UsuarioController;
 import Model.Matricula;
 
-public class JanelaNotas extends javax.swing.JFrame {
+public class JanelaFaltas extends javax.swing.JFrame {
 
     private final Matricula matricula;
 
-    public JanelaNotas(Matricula matricula) {
+    public JanelaFaltas(Matricula matricula) {
         initComponents();
         this.matricula = matricula;
         preencher();
@@ -22,18 +22,14 @@ public class JanelaNotas extends javax.swing.JFrame {
         jLabelNumero = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextFieldNota1 = new javax.swing.JTextField();
-        jTextFieldNota2 = new javax.swing.JTextField();
-        jTextFieldExame = new javax.swing.JTextField();
+        jTextFieldFaltas = new javax.swing.JTextField();
         jLabelNome = new javax.swing.JLabel();
         jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 48)); // NOI18N
-        jLabel1.setText("NOTAS");
+        jLabel1.setText("FALTAS");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel2.setText("Numero:");
@@ -44,37 +40,10 @@ public class JanelaNotas extends javax.swing.JFrame {
         jLabel5.setText("Nome:");
 
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel7.setText("Nota 1:");
+        jLabel7.setText("Faltas:");
 
-        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel9.setText("Nota 2:");
-
-        jLabel11.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel11.setText("Exame:");
-
-        jTextFieldNota1.setEditable(false);
-        jTextFieldNota1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jTextFieldNota1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ApenasNumerosKeyTyped(evt);
-            }
-        });
-
-        jTextFieldNota2.setEditable(false);
-        jTextFieldNota2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jTextFieldNota2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ApenasNumerosKeyTyped(evt);
-            }
-        });
-
-        jTextFieldExame.setEditable(false);
-        jTextFieldExame.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jTextFieldExame.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ApenasNumerosKeyTyped(evt);
-            }
-        });
+        jTextFieldFaltas.setEditable(false);
+        jTextFieldFaltas.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         jLabelNome.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
 
@@ -95,14 +64,10 @@ public class JanelaNotas extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel2)
                         .addComponent(jLabel5))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldExame, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNota2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNota1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(216, 216, 216))
@@ -131,16 +96,8 @@ public class JanelaNotas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldNota1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldNota2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextFieldExame, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-                .addGap(114, 114, 114)
+                    .addComponent(jTextFieldFaltas, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                .addGap(212, 212, 212)
                 .addComponent(jButtonCancelar)
                 .addGap(70, 70, 70))
         );
@@ -149,13 +106,6 @@ public class JanelaNotas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ApenasNumerosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApenasNumerosKeyTyped
-        char entrada = evt.getKeyChar();
-        if (!(Character.isDigit(entrada))) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_ApenasNumerosKeyTyped
-
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -163,23 +113,17 @@ public class JanelaNotas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNumero;
-    private javax.swing.JTextField jTextFieldExame;
-    private javax.swing.JTextField jTextFieldNota1;
-    private javax.swing.JTextField jTextFieldNota2;
+    private javax.swing.JTextField jTextFieldFaltas;
     // End of variables declaration//GEN-END:variables
 
     private void preencher() {
         jLabelNumero.setText(String.valueOf(matricula.getNumAluno()));
         jLabelNome.setText(UsuarioController.pesquisar(matricula.getNumAluno()).getNome());
-        jTextFieldNota1.setText(String.valueOf(matricula.getNota1()));
-        jTextFieldNota2.setText(String.valueOf(matricula.getNota2()));
-        jTextFieldExame.setText(String.valueOf(matricula.getExame()));
+        jTextFieldFaltas.setText(String.valueOf(matricula.getFaltas()));
     }
 }

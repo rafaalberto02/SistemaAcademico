@@ -2,6 +2,7 @@ package View.Menus;
 
 import Model.Usuario;
 import View.ConsultaNotas.JanelaConsultaNotas;
+import View.ConsultarFaltas.JanelaConsultaFaltas;
 import View.ManterMatriculas.JanelaRealizarMatricula;
 
 public class MenuOpcoesAluno extends javax.swing.JFrame {
@@ -28,7 +29,8 @@ public class MenuOpcoesAluno extends javax.swing.JFrame {
         jMenuMatricula = new javax.swing.JMenu();
         jMenuItemRealizarMatricula = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemVerificaNotas = new javax.swing.JMenuItem();
+        jMenuItemVerificarFaltas = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -63,13 +65,21 @@ public class MenuOpcoesAluno extends javax.swing.JFrame {
 
         jMenu1.setText("Diario");
 
-        jMenuItem1.setText("Verificar Notas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemVerificaNotas.setText("Verificar Notas");
+        jMenuItemVerificaNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemVerificaNotasActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuItemVerificaNotas);
+
+        jMenuItemVerificarFaltas.setText("Verificar Faltas");
+        jMenuItemVerificarFaltas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVerificarFaltasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemVerificarFaltas);
 
         jMenuBar1.add(jMenu1);
 
@@ -105,17 +115,22 @@ public class MenuOpcoesAluno extends javax.swing.JFrame {
         new JanelaRealizarMatricula(usuario).setVisible(true);
     }//GEN-LAST:event_jMenuItemRealizarMatriculaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemVerificaNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerificaNotasActionPerformed
         new JanelaConsultaNotas(usuario).setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemVerificaNotasActionPerformed
+
+    private void jMenuItemVerificarFaltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerificarFaltasActionPerformed
+        new JanelaConsultaFaltas(usuario).setVisible(true);
+    }//GEN-LAST:event_jMenuItemVerificarFaltasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemRealizarMatricula;
+    private javax.swing.JMenuItem jMenuItemVerificaNotas;
+    private javax.swing.JMenuItem jMenuItemVerificarFaltas;
     private javax.swing.JMenu jMenuMatricula;
     private javax.swing.JPanel jPanelOpcoes;
     // End of variables declaration//GEN-END:variables

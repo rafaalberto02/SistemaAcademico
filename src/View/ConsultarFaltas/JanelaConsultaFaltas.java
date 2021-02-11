@@ -1,9 +1,8 @@
-package View.ConsultaNotas;
+package View.ConsultarFaltas;
 
 import Controller.DisciplinaController;
 import Controller.MatriculaController;
 import Controller.TurmaController;
-import Model.FiltroTurmaDisciplina;
 import Model.Matricula;
 import Model.Turma;
 import Model.Usuario;
@@ -11,11 +10,11 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class JanelaConsultaNotas extends javax.swing.JFrame {
+public class JanelaConsultaFaltas extends javax.swing.JFrame {
 
     private final Usuario usuario;
 
-    public JanelaConsultaNotas(Usuario usuario) {
+    public JanelaConsultaFaltas(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
         listar();
@@ -118,7 +117,7 @@ public class JanelaConsultaNotas extends javax.swing.JFrame {
             int idTurma = (int) jTableTurmas.getValueAt(jTableTurmas.getSelectedRow(), 0);
             Matricula matricula = MatriculaController.pesquisar(usuario.getNumero(), idTurma);
 
-            new JanelaNotas(matricula).setVisible(true);
+            new JanelaFaltas(matricula).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "É necessario selecionar uma turma da lista");
         }
