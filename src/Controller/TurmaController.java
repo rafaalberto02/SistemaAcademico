@@ -45,24 +45,19 @@ public class TurmaController {
 
         List<Disciplina> disciplinas = new ArrayList<>();
 
-        if (!filtro.getNomeDisciplina().isBlank()) {
+        if (filtro.getNomeDisciplina() != null && !filtro.getNomeDisciplina().isBlank()) {
             disciplinas = DisciplinaController.pesquisarPorNome(filtro.getNomeDisciplina());
         }
 
         for (int i = turmas.size() - 1; i >= 0; i--) {
-            if (!filtro.getNomeDisciplina().isBlank()) {
-                boolean contem = false;
+            boolean contem = false;
 
+            if (!disciplinas.isEmpty()) {
                 for (Disciplina disciplina : disciplinas) {
-                    contem = false;
                     if (turmas.get(i).getCodDisciplina() == disciplina.getCodigo()) {
                         contem = true;
                         break;
                     }
-                }
-
-                if (!contem) {
-                    turmas.remove(i);
                 }
             }
 
@@ -70,7 +65,8 @@ public class TurmaController {
                     || filtro.getAno() > 0 && turmas.get(i).getAno() != filtro.getAno()
                     || filtro.getIdTurma() > 0 && turmas.get(i).getId() != filtro.getIdTurma()
                     || filtro.getNumProfessor() > 0 && turmas.get(i).getNumProfessor() != filtro.getNumProfessor()
-                    || !turmas.get(i).isAtiva()) {
+                    || !turmas.get(i).isAtiva()
+                    || !disciplinas.isEmpty() && !contem) {
                 turmas.remove(i);
             }
         }
