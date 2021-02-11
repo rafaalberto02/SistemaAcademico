@@ -16,8 +16,12 @@ public class MatriculaController {
         return MatriculaDao.inserir(matricula);
     }
 
-    public static List<Matricula> pesquisar(int idTurma) {
+    public static List<Matricula> pesquisarPorTurma(int idTurma) {
         return MatriculaDao.pesquisarPorTurma(idTurma);
+    }
+    
+    public static List<Matricula> pesquisarPorAluno(int numAluno){
+        return MatriculaDao.pesquisarPorAluno(numAluno);
     }
 
     public static Matricula pesquisar(int numAluno, int idTurma) {

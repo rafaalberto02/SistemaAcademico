@@ -1,6 +1,7 @@
 package View.Menus;
 
 import Model.Usuario;
+import View.ConsultaNotas.JanelaConsultaNotas;
 import View.ManterMatriculas.JanelaRealizarMatricula;
 
 public class MenuOpcoesAluno extends javax.swing.JFrame {
@@ -26,6 +27,8 @@ public class MenuOpcoesAluno extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuMatricula = new javax.swing.JMenu();
         jMenuItemRealizarMatricula = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -57,6 +60,18 @@ public class MenuOpcoesAluno extends javax.swing.JFrame {
         jMenuMatricula.add(jMenuItemRealizarMatricula);
 
         jMenuBar1.add(jMenuMatricula);
+
+        jMenu1.setText("Diario");
+
+        jMenuItem1.setText("Verificar Notas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -90,9 +105,15 @@ public class MenuOpcoesAluno extends javax.swing.JFrame {
         new JanelaRealizarMatricula(usuario).setVisible(true);
     }//GEN-LAST:event_jMenuItemRealizarMatriculaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new JanelaConsultaNotas(usuario).setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemRealizarMatricula;
     private javax.swing.JMenu jMenuMatricula;
