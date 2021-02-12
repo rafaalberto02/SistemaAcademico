@@ -4,9 +4,9 @@ import Dao.TurmaDao;
 import Model.Disciplina;
 import Model.FiltroTurmaDisciplina;
 import Model.Turma;
-import View.ManterTurmas.AbrirTurma.JanelaListarDisciplinasDisponiveis;
-import View.ManterTurmas.AbrirTurma.JanelaListarProfessoresDisponiveis;
-import View.ManterTurmas.AbrirTurma.JanelaSemestreAno;
+import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaListarDisciplinasDisponiveis;
+import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaListarProfessoresDisponiveis;
+import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaSemestreAno;
 import java.util.ArrayList;
 import java.util.List;
 

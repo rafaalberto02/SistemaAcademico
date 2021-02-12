@@ -1,8 +1,10 @@
 package View.Login;
 
+import View.Professor.MenuOpcoesProfessor;
+import View.Aluno.MenuOpcoesAluno;
+import View.SecretariaCoordenador.MenuOpcoesSecretariaCoordernador;
 import Controller.UsuarioController;
 import Model.Usuario;
-import View.Menus.*;
 import View.Sobre.JanelaSobre;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
