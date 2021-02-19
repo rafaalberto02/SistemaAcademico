@@ -19,7 +19,7 @@ public class MatriculaDao {
 
     public static boolean inserir(Matricula matricula) {
         MatriculaDao.connection = ConnectionFactory.getConnection();
-        String SQLQuery = "insert into Matricula values (?, ?, ?, ?, ?, ?)";
+        String SQLQuery = "insert into Matricula values (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             stmt = connection.prepareStatement(SQLQuery);
@@ -30,6 +30,7 @@ public class MatriculaDao {
             stmt.setInt(4, matricula.getNota2());
             stmt.setInt(5, matricula.getExame());
             stmt.setInt(6, matricula.getFaltas());
+            stmt.setBoolean(7, matricula.isAprovado());
 
             stmt.execute();
             fecharConexoes();
@@ -147,7 +148,7 @@ public class MatriculaDao {
 
     public static boolean alterar(Matricula matricula) {
         MatriculaDao.connection = ConnectionFactory.getConnection();
-        String SQLQuery = "update Matricula set nota1 = ?, nota2 = ?, exame = ?, faltas = ? where numAluno = ? and idTurma = ?";
+        String SQLQuery = "update Matricula set nota1 = ?, nota2 = ?, exame = ?, faltas = ?, aprovado = ? where numAluno = ? and idTurma = ?";
 
         try {
             stmt = connection.prepareStatement(SQLQuery);
@@ -156,9 +157,10 @@ public class MatriculaDao {
             stmt.setInt(2, matricula.getNota2());
             stmt.setInt(3, matricula.getExame());
             stmt.setInt(4, matricula.getFaltas());
+            stmt.setBoolean(5, matricula.isAprovado());
 
-            stmt.setInt(5, matricula.getNumAluno());
-            stmt.setInt(6, matricula.getIdturma());
+            stmt.setInt(6, matricula.getNumAluno());
+            stmt.setInt(7, matricula.getIdturma());
 
             stmt.execute();
 
