@@ -27,9 +27,9 @@ public class TurmaDao {
             stmt.setInt(1, turma.getId());
             stmt.setInt(2, turma.getSemestre());
             stmt.setInt(3, turma.getAno());
-            stmt.setBoolean(4, turma.isAtiva());
-            stmt.setInt(5, turma.getNumProfessor());
-            stmt.setInt(6, turma.getCodDisciplina());
+            stmt.setInt(4, turma.getNumProfessor());
+            stmt.setInt(5, turma.getCodDisciplina());
+            stmt.setBoolean(6, turma.isAtiva());
 
             stmt.execute();
             fecharConexoes();
