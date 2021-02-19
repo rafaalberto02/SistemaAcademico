@@ -84,8 +84,21 @@ public class Matricula {
         this.aprovado = aprovado;
     }
 
+    public double mediaProvas(){
+        return (this.nota1 + this.nota2) / 2;
+    }
+    
+    public double mediaProvasExame(){
+        return (this.nota1 + this.nota2 + this.exame) / 3;
+    }
+        
+    public int calculaFrequencia(int creditoDisciplina) {
+        return (faltas * 100) / creditoDisciplina;
+    }
+    
     @Override
     public String toString() {
         return "Matricula{" + "numAluno=" + numAluno + ", idturma=" + idturma + ", nota1=" + nota1 + ", nota2=" + nota2 + ", exame=" + exame + ", faltas=" + faltas + ", aprovado=" + aprovado + '}';
     }
+
 }
