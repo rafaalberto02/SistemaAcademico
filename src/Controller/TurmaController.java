@@ -1,8 +1,10 @@
 package Controller;
 
+import Dao.DisciplinaDao;
 import Dao.TurmaDao;
 import Model.Disciplina;
 import Model.FiltroTurmaDisciplina;
+import Model.Matricula;
 import Model.Turma;
 import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaListarDisciplinasDisponiveis;
 import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaListarProfessoresDisponiveis;
@@ -80,5 +82,24 @@ public class TurmaController {
 
     public static int quantidadeDeAlunos(int idTurma) {
         return TurmaDao.quantidadeDeAlunos(idTurma);
+    }
+
+    public static boolean fecharTurma(Turma turma) {
+
+        List<Matricula> matriculas = MatriculaController.pesquisarPorTurma(turma.getId());
+
+        int creditoDisciplina = DisciplinaDao.pesquisar(turma.getCodDisciplina()).getCredito();
+        
+        matriculas.forEach(matricula -> {
+            MatriculaController.calculaSituacaoAlunos(matricula, creditoDisciplina);
+        });
+
+        turma.setAtiva(false);
+        
+        return alterar(turma);
+    }
+
+    private static boolean alterar(Turma turma) {
+        return TurmaDao.alterar(turma);
     }
 }
