@@ -159,7 +159,7 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
             int linha = jTableListarAlunos.getSelectedRow();
             int numero = (int) jTableListarAlunos.getValueAt(linha, 0);
 
-            Matricula matricula = MatriculaController.pesquisar(numero, turma.getCodDisciplina());
+            Matricula matricula = MatriculaController.pesquisar(numero, turma.getId());
 
             if (jRadioButtonNotas.isSelected()) {
                 new JanelaAlterarNota(matricula).setVisible(true);
