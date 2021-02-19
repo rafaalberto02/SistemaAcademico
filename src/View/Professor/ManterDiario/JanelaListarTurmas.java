@@ -12,11 +12,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class JanelaListarTurmas extends javax.swing.JFrame {
 
-    private final Usuario usuario;
+    private final Usuario USUARIO;
 
     public JanelaListarTurmas(Usuario usuario) {
         initComponents();
-        this.usuario = usuario;
+        this.USUARIO = usuario;
     }
 
     @SuppressWarnings("unchecked")
@@ -253,7 +253,7 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
         int semestre = paraNumero(jTextFieldSemestre.getText());
         int ano = paraNumero(jTextFieldAno.getText());
         int turma = paraNumero(jTextFieldTurma.getText());
-        int numProfessor = usuario.getNumero();
+        int numProfessor = USUARIO.getNumero();
 
         FiltroTurmaDisciplina filtro = new FiltroTurmaDisciplina(disciplina, semestre, ano, turma, numProfessor);
 
@@ -266,7 +266,7 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
             int numero = (int) jTableListarTurmas.getValueAt(linha, 0);
             Turma turma = TurmaController.pesquisar(numero);
 
-            new JanelaListarAlunosTurma(turma).setVisible(true);
+            new View.Professor.ManterDiario.JanelaListarAlunosTurma(turma).setVisible(true);
 
         } else {
             JOptionPane.showMessageDialog(null, "E necessario selecionar uma disciplina da lista");
