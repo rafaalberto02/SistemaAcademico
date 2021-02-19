@@ -140,7 +140,7 @@ public class JanelaFecharTurmas extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) jTableListarTurmas.getModel();
         tableModel.setRowCount(0);
 
-        List<Turma> turmas = TurmaController.listar(filtro);
+        List<Turma> turmas = TurmaController.listarComFiltroAtivas(filtro);
 
         turmas.forEach(turma -> {
             tableModel.addRow(adicionarLinha(turma));
