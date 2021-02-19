@@ -23,6 +23,8 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
         initComponents();
         this.usuario = usuario;
 
+        jMenuDiario.setVisible(false);
+
         if (usuario.getPerfil().equalsIgnoreCase("secretaria")) {
             modificarParaSecretaria();
         }
@@ -49,6 +51,8 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
         jMenuItemListarUsuarios = new javax.swing.JMenuItem();
         jMenuTurma = new javax.swing.JMenu();
         jMenuItemAbrirTurma = new javax.swing.JMenuItem();
+        jMenuDiario = new javax.swing.JMenu();
+        jMenuItemEmitirDiario = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -158,6 +162,18 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuTurma);
 
+        jMenuDiario.setText("Diario");
+
+        jMenuItemEmitirDiario.setText("Emitir Diario");
+        jMenuItemEmitirDiario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoPressionadoActionPerformed(evt);
+            }
+        });
+        jMenuDiario.add(jMenuItemEmitirDiario);
+
+        jMenuBar1.add(jMenuDiario);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,7 +231,12 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
             } else if (evt.getSource() == jMenuItemListarUsuarios) {
                 frame = new JanelaListarUsuarios();
             }
-            
+
+            //Diario
+            if (evt.getSource() == jMenuItemEmitirDiario) {
+                frame = new View.SecretariaCoordenador.EmitirDiario.JanelaListarTurmas();
+            }
+
             frame.setVisible(true);
         }
 
@@ -225,6 +246,7 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMenuUsuario;
     private javax.swing.JMenu jMenuAlunos;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuDiario;
     private javax.swing.JMenu jMenuDisciplinas;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAbrirTurma;
@@ -234,6 +256,7 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemConsultarUsuario;
     private javax.swing.JMenuItem jMenuItemEditarDisciplina;
     private javax.swing.JMenuItem jMenuItemEditarUsuario;
+    private javax.swing.JMenuItem jMenuItemEmitirDiario;
     private javax.swing.JMenuItem jMenuItemExcluirDisciplina;
     private javax.swing.JMenuItem jMenuItemExcluirUsuario;
     private javax.swing.JMenuItem jMenuItemListarDisciplinas;
@@ -243,6 +266,7 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
 
     private void modificarParaSecretaria() {
         jMenuTurma.setVisible(false);
+        jMenuDiario.setVisible(true);
         jLabelMenuUsuario.setText("MENU SECRETARIA");
     }
 }
