@@ -1,6 +1,7 @@
 package View.Professor;
 
 import Model.Usuario;
+import View.Professor.FecharTurma.JanelaFecharTurmas;
 import View.Professor.ManterDiario.JanelaListarTurmas;
 
 public class MenuOpcoesProfessor extends javax.swing.JFrame {
@@ -22,6 +23,7 @@ public class MenuOpcoesProfessor extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuMatricula = new javax.swing.JMenu();
         jMenuItemManterDiario = new javax.swing.JMenuItem();
+        jMenuItemFecharTurma = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -51,6 +53,14 @@ public class MenuOpcoesProfessor extends javax.swing.JFrame {
             }
         });
         jMenuMatricula.add(jMenuItemManterDiario);
+
+        jMenuItemFecharTurma.setText("Fechar Turma");
+        jMenuItemFecharTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFecharTurmaActionPerformed(evt);
+            }
+        });
+        jMenuMatricula.add(jMenuItemFecharTurma);
 
         jMenuBar1.add(jMenuMatricula);
 
@@ -86,10 +96,15 @@ public class MenuOpcoesProfessor extends javax.swing.JFrame {
         new JanelaListarTurmas(usuario).setVisible(true);
     }//GEN-LAST:event_jMenuItemManterDiarioActionPerformed
 
+    private void jMenuItemFecharTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFecharTurmaActionPerformed
+        new JanelaFecharTurmas(usuario).setVisible(true);
+    }//GEN-LAST:event_jMenuItemFecharTurmaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItemFecharTurma;
     private javax.swing.JMenuItem jMenuItemManterDiario;
     private javax.swing.JMenu jMenuMatricula;
     private javax.swing.JPanel jPanelOpcoes;
