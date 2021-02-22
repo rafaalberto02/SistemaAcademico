@@ -82,7 +82,7 @@ public class ProfessorDao {
             return professores;
 
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfessorDao.class.getName()).log(Level.SEVERE, null, ex);
             fecharConexoes();
             return null;
         }
@@ -103,7 +103,7 @@ public class ProfessorDao {
             fecharConexoes();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfessorDao.class.getName()).log(Level.SEVERE, null, ex);
             fecharConexoes();
             return false;
         }
@@ -121,7 +121,7 @@ public class ProfessorDao {
                 connection.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfessorDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

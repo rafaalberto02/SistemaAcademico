@@ -52,7 +52,7 @@ public class AlunoDao {
             if (rs.next()) {
                 alunoRetorno = criarObjetoAluno(rs);
             }
-            
+
             fecharConexoes();
 
             return alunoRetorno;
@@ -82,7 +82,7 @@ public class AlunoDao {
             return alunos;
 
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
             fecharConexoes();
             return null;
         }
@@ -103,7 +103,7 @@ public class AlunoDao {
             fecharConexoes();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
             fecharConexoes();
             return false;
         }
@@ -121,7 +121,7 @@ public class AlunoDao {
                 connection.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
