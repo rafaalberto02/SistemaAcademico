@@ -11,27 +11,23 @@ public class TurmaController {
 
     public static boolean abrirTurma(Turma turma) {
 
-        if (turma.getCodDisciplina() > 0) {
+        if (turma.getCodDisciplina() <= 0) {
 
-            if (turma.getNumProfessor() > 0) {
+            new JanelaListarDisciplinasDisponiveis(turma).setVisible(true);
 
-                if (turma.getId() > 0
-                        || turma.getAno() > 0
-                        || turma.getSemestre() > 0) {
+        } else if (turma.getNumProfessor() <= 0) {
 
-                    turma.setAtiva(true);
-                    return TurmaDao.inserir(turma);
+            new JanelaListarProfessoresDisponiveis(turma).setVisible(true);
 
-                } else {
-                    new JanelaSemestreAno(turma).setVisible(true);
-                }
+        } else if (turma.getId() <= 0
+                || turma.getAno() <= 0
+                || turma.getSemestre() <= 0) {
 
-            } else {
-                new JanelaListarProfessoresDisponiveis(turma).setVisible(true);
-            }
+            new JanelaSemestreAno(turma).setVisible(true);
 
         } else {
-            new JanelaListarDisciplinasDisponiveis(turma).setVisible(true);
+            turma.setAtiva(true);
+            return TurmaDao.inserir(turma);
         }
 
         return false;
