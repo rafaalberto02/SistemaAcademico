@@ -4,8 +4,10 @@ import Dao.AlunoDao;
 import Dao.ProfessorDao;
 import Dao.UsuarioDao;
 import Model.Aluno;
+import Model.FiltroUsuario;
 import Model.Professor;
 import Model.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioController {
@@ -87,7 +89,7 @@ public class UsuarioController {
         for (int i = 0; i < usuarios.size(); i++) {
 
             Usuario usuario = usuarios.get(i);
-            
+
             if (usuarios.get(i).getPerfil().equalsIgnoreCase("aluno")) {
                 String curso = AlunoDao.pesquisar(usuario.getNumero()).getCurso();
                 usuarios.set(i, new Aluno(curso, usuario));
@@ -101,4 +103,18 @@ public class UsuarioController {
         return usuarios;
     }
 
+    public static List<Usuario> listarPorFiltro(FiltroUsuario filtro) {
+        List<Usuario> usuarios = UsuarioDao.listarPorNome(filtro.getNome());
+        List<Usuario> usuariosRetorno = new ArrayList();
+
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getPerfil().equals(filtro.getPerfil())
+                    || filtro.getNumero() > 0 && filtro.getNumero() == usuarios.get(i).getNumero()) {
+                usuariosRetorno.add(usuarios.get(i));
+            }
+
+        }
+
+        return usuariosRetorno;
+    }
 }

@@ -115,6 +115,32 @@ public class UsuarioDao {
 
     }
 
+    public static List<Usuario> listarPorNome(String nome) {
+        UsuarioDao.connection = ConnectionFactory.getConnection();
+        String SQLQuery = "select * from Usuario where nome like ?";
+
+        try {
+            List<Usuario> usuarios = new ArrayList();
+
+            stmt = connection.prepareStatement(SQLQuery);
+            stmt.setString(1, "%" + nome + "%");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                usuarios.add(criarObjetoUsuario(rs));
+            }
+
+            fecharConexoes();
+            return usuarios;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            fecharConexoes();
+            return null;
+        }
+
+    }
+    
     public static boolean alterar(Usuario usuario) {
         UsuarioDao.connection = ConnectionFactory.getConnection();
         String SQLQuery = "update Usuario set nome = ?, login = ? where numero = ?";
