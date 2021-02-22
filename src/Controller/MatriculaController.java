@@ -3,6 +3,7 @@ package Controller;
 import Dao.MatriculaDao;
 import Exceptions.LimiteDeAlunosAtingido;
 import Model.Matricula;
+import Model.Turma;
 import java.util.List;
 
 public class MatriculaController {
@@ -32,16 +33,18 @@ public class MatriculaController {
         return MatriculaDao.alterar(matricula);
     }
 
-    public static void calculaSituacaoAlunos(Matricula matricula, int creditoDisciplina) {
-        if (matricula.mediaProvas() >= 6
-                && matricula.calculaFrequencia(creditoDisciplina * 10) <= 25) {
-            matricula.setAprovado(true);
-        } else if (matricula.getExame() > 0
-                && matricula.mediaProvasExame() >= 6) {
-            matricula.setAprovado(true);
-        } else if (matricula.mediaProvas() < 6 && matricula.mediaProvas() >= 4
-                && matricula.calculaFrequencia(creditoDisciplina * 10) <= 25) {
-            matricula.setExame(-1);
+    public static void calculaSituacaoAluno(Matricula matricula, int creditoDisciplina) {
+        if (matricula.calculaFrequencia(creditoDisciplina * 10) <= 25) {
+            if (matricula.mediaProvas() >= 6) {
+                matricula.setAprovado(true);
+            } else if (matricula.getExame() > 0
+                    && matricula.mediaProvasExame() >= 6) {
+                matricula.setAprovado(true);
+            } else if (matricula.mediaProvas() < 6 && matricula.mediaProvas() >= 4) {
+                matricula.setExame(-1);
+            } else {
+                matricula.setAprovado(false);
+            }
         } else {
             matricula.setAprovado(false);
         }
@@ -49,4 +52,12 @@ public class MatriculaController {
         alterar(matricula);
     }
 
+    public static void calculaSituacaoAlunoPorTurma(Turma turma) {
+        List<Matricula> matriculas = pesquisarPorTurma(turma.getId());
+        int creditoDisciplina = DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getCredito();
+
+        matriculas.forEach(matricula -> {
+            calculaSituacaoAluno(matricula, creditoDisciplina);
+        });
+    }
 }

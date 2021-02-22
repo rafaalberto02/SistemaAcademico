@@ -96,15 +96,8 @@ public class TurmaController {
     }
 
     public static boolean fecharTurma(Turma turma) {
-
-        List<Matricula> matriculas = MatriculaController.pesquisarPorTurma(turma.getId());
-
-        int creditoDisciplina = DisciplinaDao.pesquisar(turma.getCodDisciplina()).getCredito();
-
-        matriculas.forEach(matricula -> {
-            MatriculaController.calculaSituacaoAlunos(matricula, creditoDisciplina);
-        });
-
+        MatriculaController.calculaSituacaoAlunoPorTurma(turma);
+        
         turma.setAtiva(false);
 
         return alterar(turma);
