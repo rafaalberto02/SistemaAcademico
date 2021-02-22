@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fael/Archives/projects/SistemaAcademico/src/View/Professor/FecharTurma/JanelaFecharTurmas.java</file>
+            <file>file:/home/fael/Archives/projects/SistemaAcademico/src/View/SecretariaCoordenador/EmitirHistorico/JanelaListarAlunos.java</file>
+            <file>file:/home/fael/Archives/projects/SistemaAcademico/src/View/SecretariaCoordenador/EmitirHistorico/JanelaDisciplinasParticipadas.java</file>
+            <file>file:/home/fael/Archives/projects/SistemaAcademico/src/View/SecretariaCoordenador/MenuOpcoesSecretariaCoordernador.java</file>
         </group>
     </open-files>
 </project-private>
