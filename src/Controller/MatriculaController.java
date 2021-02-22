@@ -10,7 +10,7 @@ public class MatriculaController {
 
     public static boolean inserir(Matricula matricula) throws LimiteDeAlunosAtingido {
 
-        if (TurmaController.podeInserirAluno(matricula.getIdturma())) {
+        if (!TurmaController.podeInserirAluno(matricula.getIdturma())) {
             throw new LimiteDeAlunosAtingido();
         }
 
