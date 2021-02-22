@@ -91,8 +91,8 @@ public class TurmaController {
         return TurmaDao.pesquisar(id);
     }
 
-    public static int quantidadeDeAlunos(int idTurma) {
-        return TurmaDao.quantidadeDeAlunos(idTurma);
+    public static boolean podeInserirAluno(int idTurma) {
+        return TurmaDao.quantidadeDeAlunos(idTurma) < 50;
     }
 
     public static boolean fecharTurma(Turma turma) {
