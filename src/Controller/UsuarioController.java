@@ -27,10 +27,10 @@ public class UsuarioController {
 
         if (UsuarioDao.inserir(usuario)) {
 
-            if (usuario instanceof Aluno) {
-                return AlunoDao.inserir((Aluno) usuario);
-            } else if (usuario instanceof Professor) {
-                return ProfessorDao.inserir((Professor) usuario);
+            if (usuario instanceof Aluno aluno) {
+                return AlunoDao.inserir(aluno);
+            } else if (usuario instanceof Professor professor) {
+                return ProfessorDao.inserir(professor);
             }
 
             return true;
@@ -69,10 +69,10 @@ public class UsuarioController {
 
         if (UsuarioDao.alterar(usuario)) {
 
-            if (usuario instanceof Aluno) {
-                return AlunoDao.alterar((Aluno) usuario);
-            } else if (usuario instanceof Professor) {
-                return ProfessorDao.alterar((Professor) usuario);
+            if (usuario instanceof Aluno aluno) {
+                return AlunoDao.alterar(aluno);
+            } else if (usuario instanceof Professor professor) {
+                return ProfessorDao.alterar(professor);
             }
 
             return true;
