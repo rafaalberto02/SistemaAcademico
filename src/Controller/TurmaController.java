@@ -1,15 +1,10 @@
 package Controller;
 
-import Dao.DisciplinaDao;
 import Dao.TurmaDao;
 import Model.Disciplina;
 import Model.FiltroTurmaDisciplina;
-import Model.Matricula;
 import Model.Turma;
-import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaListarDisciplinasDisponiveis;
-import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaListarProfessoresDisponiveis;
-import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.JanelaSemestreAno;
-import java.util.ArrayList;
+import View.SecretariaCoordenador.ManterTurmas.AbrirTurma.*;
 import java.util.List;
 
 public class TurmaController {
@@ -50,29 +45,24 @@ public class TurmaController {
                 turmas.remove(i);
             }
         }
-        
+
         return turmas;
     }
 
     public static List<Turma> listarComFiltro(FiltroTurmaDisciplina filtro) {
         List<Turma> turmas = TurmaDao.listar();
 
-        List<Disciplina> disciplinas = new ArrayList<>();
-
-        if (filtro.getNomeDisciplina() != null && !filtro.getNomeDisciplina().isBlank()) {
-            disciplinas = DisciplinaController.pesquisarPorNome(filtro.getNomeDisciplina());
-        }
+        List<Disciplina> disciplinas = DisciplinaController.pesquisarPorNome(filtro.getNomeDisciplina());
 
         for (int i = turmas.size() - 1; i >= 0; i--) {
             boolean contem = false;
 
-            if (!disciplinas.isEmpty()) {
-                for (Disciplina disciplina : disciplinas) {
-                    if (turmas.get(i).getCodDisciplina() == disciplina.getCodigo()) {
-                        contem = true;
-                        break;
-                    }
+            for (Disciplina disciplina : disciplinas) {
+                if (turmas.get(i).getCodDisciplina() == disciplina.getCodigo()) {
+                    contem = true;
+                    break;
                 }
+
             }
 
             if (filtro.getSemestre() > 0 && turmas.get(i).getSemestre() != filtro.getSemestre()
@@ -97,7 +87,7 @@ public class TurmaController {
 
     public static boolean fecharTurma(Turma turma) {
         MatriculaController.calculaSituacaoAlunoPorTurma(turma);
-        
+
         turma.setAtiva(false);
 
         return alterar(turma);
