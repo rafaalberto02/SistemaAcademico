@@ -31,51 +31,73 @@ public class JanelaConsultarUsuario extends javax.swing.JFrame {
         jButtonLimpar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consultar Usuario");
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("CONSULTAR USUARIO");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel2.setText("NUMERO");
 
-        jTextFieldNome.setEditable(false);
+        jTextFieldNumero.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jTextFieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApenasNumeroKeyTyped(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jTextFieldNome.setEditable(false);
+        jTextFieldNome.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel3.setText("NOME");
 
         jTextFieldLogin.setEditable(false);
+        jTextFieldLogin.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel4.setText("LOGIN");
 
         jTextFieldPerfil.setEditable(false);
+        jTextFieldPerfil.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
-        jLabelPerfil.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabelPerfil.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabelPerfil.setText("PERFIL");
 
-        jLabelCursoTitulacao.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabelCursoTitulacao.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabelCursoTitulacao.setText("CURSO");
         jLabelCursoTitulacao.setEnabled(false);
 
         jTextFieldCursoTitulacao.setEditable(false);
+        jTextFieldCursoTitulacao.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jTextFieldCursoTitulacao.setEnabled(false);
 
+        jButtonConsultar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConsultarActionPerformed(evt);
             }
         });
 
+        jButtonLimpar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);
             }
         });
 
+        jButtonSair.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonSair.setText("Sair");
+        jButtonSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSairActionPerformed(evt);
@@ -89,7 +111,10 @@ public class JanelaConsultarUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
+                        .addGap(266, 266, 266)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -102,23 +127,20 @@ public class JanelaConsultarUsuario extends javax.swing.JFrame {
                             .addComponent(jLabelCursoTitulacao)
                             .addComponent(jTextFieldCursoTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addComponent(jButtonConsultar)
-                        .addGap(56, 56, 56)
-                        .addComponent(jButtonLimpar)
-                        .addGap(53, 53, 53)
-                        .addComponent(jButtonSair))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(jLabel1)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                        .addContainerGap(145, Short.MAX_VALUE)
+                        .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,12 +160,12 @@ public class JanelaConsultarUsuario extends javax.swing.JFrame {
                 .addComponent(jLabelCursoTitulacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCursoTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConsultar)
                     .addComponent(jButtonLimpar)
                     .addComponent(jButtonSair))
-                .addGap(45, 45, 45))
+                .addContainerGap())
         );
 
         pack();
@@ -165,6 +187,13 @@ public class JanelaConsultarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "E necessario preencher o campo numero para a pesquisa");
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void ApenasNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApenasNumeroKeyTyped
+        char entrada = evt.getKeyChar();
+        if (!(Character.isDigit(entrada))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ApenasNumeroKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConsultar;

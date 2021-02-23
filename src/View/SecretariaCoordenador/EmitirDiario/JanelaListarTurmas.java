@@ -4,7 +4,6 @@ import Controller.DisciplinaController;
 import Controller.TurmaController;
 import Model.FiltroTurmaDisciplina;
 import Model.Turma;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -33,12 +32,17 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
         jButtonSelecionar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Selecionar Turma");
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("SELECIONAR TURMA");
 
-        jCheckBoxDisciplina.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jCheckBoxDisciplina.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jCheckBoxDisciplina.setText("Disciplina");
         jCheckBoxDisciplina.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jCheckBoxDisciplina.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +51,7 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
             }
         });
 
-        jCheckBoxSemestre.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jCheckBoxSemestre.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jCheckBoxSemestre.setText("Semestre");
         jCheckBoxSemestre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jCheckBoxSemestre.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +60,7 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
             }
         });
 
-        jCheckBoxAno.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jCheckBoxAno.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jCheckBoxAno.setText("Ano");
         jCheckBoxAno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jCheckBoxAno.addActionListener(new java.awt.event.ActionListener() {
@@ -65,26 +69,38 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel2.setText("Filtros:");
 
         jTextFieldDisciplina.setEditable(false);
-        jTextFieldDisciplina.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jTextFieldDisciplina.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
         jTextFieldAno.setEditable(false);
-        jTextFieldAno.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jTextFieldAno.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jTextFieldAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApenasNumerosKeyTyped(evt);
+            }
+        });
 
         jTextFieldSemestre.setEditable(false);
-        jTextFieldSemestre.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jTextFieldSemestre.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jTextFieldSemestre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApenasNumerosKeyTyped(evt);
+            }
+        });
 
-        jButtonPesquisar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jButtonPesquisar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
 
+        jTableListarTurmas.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTableListarTurmas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -103,16 +119,18 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableListarTurmas);
 
-        jButtonSelecionar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jButtonSelecionar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonSelecionar.setText("Selecionar");
+        jButtonSelecionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSelecionarActionPerformed(evt);
             }
         });
 
-        jButtonCancelar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jButtonCancelar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -123,10 +141,14 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
@@ -138,29 +160,25 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jButtonSelecionar)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonPesquisar)
-                        .addGap(96, 96, 96)
-                        .addComponent(jButtonCancelar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jTextFieldDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(55, 55, 55)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -177,12 +195,12 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
                             .addComponent(jCheckBoxAno)
                             .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonPesquisar)
                     .addComponent(jButtonSelecionar)
                     .addComponent(jButtonCancelar))
-                .addGap(49, 49, 49))
+                .addContainerGap())
         );
 
         pack();
@@ -222,8 +240,8 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         String disciplina = jTextFieldDisciplina.getText();
-        int semestre = paraNumero(jTextFieldSemestre.getText());
-        int ano = paraNumero(jTextFieldAno.getText());
+        int semestre = Integer.valueOf(jTextFieldSemestre.getText());
+        int ano = Integer.valueOf(jTextFieldAno.getText());
 
         FiltroTurmaDisciplina filtro = new FiltroTurmaDisciplina(disciplina, semestre, ano);
 
@@ -231,17 +249,23 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
-        if (jTableListarTurmas.getSelectedRow() != -1) {
+        if (jTableListarTurmas.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "E necessario selecionar uma disciplina da lista");
+        } else {
             int linha = jTableListarTurmas.getSelectedRow();
             int numero = (int) jTableListarTurmas.getValueAt(linha, 0);
             Turma turma = TurmaController.pesquisar(numero);
 
             new View.SecretariaCoordenador.EmitirDiario.JanelaExibirAlunosMatriculados(turma).setVisible(true);
-
-        } else {
-            JOptionPane.showMessageDialog(null, "E necessario selecionar uma disciplina da lista");
         }
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
+
+    private void ApenasNumerosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApenasNumerosKeyTyped
+        char entrada = evt.getKeyChar();
+        if (!(Character.isDigit(entrada))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ApenasNumerosKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
@@ -271,22 +295,13 @@ public class JanelaListarTurmas extends javax.swing.JFrame {
     }
 
     private Object[] adicionarLinha(Turma turma) {
-        List<Object> linha = new ArrayList<>();
+        Object[] linha = {
+            turma.getId(),
+            turma.getSemestre(),
+            turma.getAno(),
+            DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome()
+        };
 
-        linha.add(turma.getId());
-        linha.add(turma.getSemestre());
-        linha.add(turma.getAno());
-        linha.add(DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome());
-
-        return linha.toArray();
-    }
-
-    private int paraNumero(String text) {
-        try {
-            int numero = Integer.valueOf(text);
-            return numero;
-        } catch (NumberFormatException e) {
-            return 0;
-        }
+        return linha;
     }
 }

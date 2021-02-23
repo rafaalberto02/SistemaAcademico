@@ -32,6 +32,7 @@ public class MenuOpcoesAluno extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Aluno");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N

@@ -9,7 +9,6 @@ import Model.FiltroTurmaDisciplina;
 import Model.Matricula;
 import Model.Turma;
 import Model.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,15 +17,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class JanelaRealizarMatricula extends javax.swing.JFrame {
 
-    private Usuario usuario;
-
-    public JanelaRealizarMatricula() {
-        initComponents();
-    }
+    private final Usuario USUARIO;
 
     public JanelaRealizarMatricula(Usuario usuario) {
         initComponents();
-        this.usuario = usuario;
+        this.USUARIO = usuario;
+        listar(new FiltroTurmaDisciplina());
     }
 
     @SuppressWarnings("unchecked")
@@ -34,71 +30,32 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jCheckBoxDisciplina = new javax.swing.JCheckBox();
-        jCheckBoxSemestre = new javax.swing.JCheckBox();
-        jCheckBoxAno = new javax.swing.JCheckBox();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldDisciplina = new javax.swing.JTextField();
-        jTextFieldAno = new javax.swing.JTextField();
-        jTextFieldSemestre = new javax.swing.JTextField();
-        jButtonPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListarTurmas = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jTextFieldAno = new javax.swing.JTextField();
+        jCheckBoxAno = new javax.swing.JCheckBox();
+        jCheckBoxSemestre = new javax.swing.JCheckBox();
+        jTextFieldSemestre = new javax.swing.JTextField();
+        jTextFieldDisciplina = new javax.swing.JTextField();
+        jCheckBoxDisciplina = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jButtonMatricular = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Realizar Matricula");
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("REALIZAR MATRICULA");
 
-        jCheckBoxDisciplina.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jCheckBoxDisciplina.setText("Disciplina");
-        jCheckBoxDisciplina.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jCheckBoxDisciplina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxDisciplinaActionPerformed(evt);
-            }
-        });
-
-        jCheckBoxSemestre.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jCheckBoxSemestre.setText("Semestre");
-        jCheckBoxSemestre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jCheckBoxSemestre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxSemestreActionPerformed(evt);
-            }
-        });
-
-        jCheckBoxAno.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jCheckBoxAno.setText("Ano");
-        jCheckBoxAno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jCheckBoxAno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxAnoActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel2.setText("Filtros:");
-
-        jTextFieldDisciplina.setEditable(false);
-        jTextFieldDisciplina.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-
-        jTextFieldAno.setEditable(false);
-        jTextFieldAno.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-
-        jTextFieldSemestre.setEditable(false);
-        jTextFieldSemestre.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-
-        jButtonPesquisar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButtonPesquisar.setText("Pesquisar");
-        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarActionPerformed(evt);
-            }
-        });
-
+        jTableListarTurmas.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTableListarTurmas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -117,7 +74,100 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableListarTurmas);
 
-        jButtonMatricular.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jTextFieldAno.setEditable(false);
+        jTextFieldAno.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jTextFieldAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApenasNumerosKeyTyped(evt);
+            }
+        });
+
+        jCheckBoxAno.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jCheckBoxAno.setText("Ano");
+        jCheckBoxAno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jCheckBoxAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxAnoActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxSemestre.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jCheckBoxSemestre.setText("Semestre");
+        jCheckBoxSemestre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jCheckBoxSemestre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxSemestreActionPerformed(evt);
+            }
+        });
+
+        jTextFieldSemestre.setEditable(false);
+        jTextFieldSemestre.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jTextFieldSemestre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApenasNumerosKeyTyped(evt);
+            }
+        });
+
+        jTextFieldDisciplina.setEditable(false);
+        jTextFieldDisciplina.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+
+        jCheckBoxDisciplina.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jCheckBoxDisciplina.setText("Disciplina");
+        jCheckBoxDisciplina.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jCheckBoxDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxDisciplinaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabel2.setText("Filtros:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jCheckBoxDisciplina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxSemestre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel2)
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBoxDisciplina)
+                        .addComponent(jTextFieldDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(37, 37, 37)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBoxSemestre)
+                        .addComponent(jTextFieldSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(31, 31, 31)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBoxAno)
+                        .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(20, Short.MAX_VALUE)))
+        );
+
+        jButtonMatricular.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonMatricular.setText("Matricular");
         jButtonMatricular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,78 +175,77 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
             }
         });
 
-        jButtonCancelar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+                jButtonPesquisarActionPerformed(evt);
             }
         });
+
+        jButtonVoltar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVoltar)
+                    .addComponent(jButtonPesquisar)
+                    .addComponent(jButtonMatricular))
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(150, 150, 150))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jCheckBoxDisciplina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCheckBoxSemestre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCheckBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jButtonMatricular)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonPesquisar)
-                        .addGap(85, 85, 85)
-                        .addComponent(jButtonCancelar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBoxDisciplina)
-                            .addComponent(jTextFieldDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBoxSemestre)
-                            .addComponent(jTextFieldSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBoxAno)
-                            .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonPesquisar)
-                    .addComponent(jButtonMatricular)
-                    .addComponent(jButtonCancelar))
-                .addGap(49, 49, 49))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(104, 104, 104)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -230,14 +279,14 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBoxAnoActionPerformed
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         String disciplina = jTextFieldDisciplina.getText();
-        int semestre = paraNumero(jTextFieldSemestre.getText());
-        int ano = paraNumero(jTextFieldAno.getText());
+        int semestre = Integer.valueOf(jTextFieldSemestre.getText());
+        int ano = Integer.valueOf(jTextFieldAno.getText());
 
         FiltroTurmaDisciplina filtro = new FiltroTurmaDisciplina(disciplina, semestre, ano);
 
@@ -245,27 +294,36 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButtonMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMatricularActionPerformed
-        if (jTableListarTurmas.getSelectedRow() != -1) {
+        if (jTableListarTurmas.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "E necessario selecionar uma disciplina da lista");
+        } else {
             int linha = jTableListarTurmas.getSelectedRow();
             int idTurma = (int) jTableListarTurmas.getValueAt(linha, 0);
 
-            Matricula matricula = new Matricula(usuario.getNumero(), idTurma);
+            Matricula matricula = new Matricula(USUARIO.getNumero(), idTurma);
 
             matricular(matricula);
-        } else {
-            JOptionPane.showMessageDialog(null, "E necessario selecionar uma disciplina da lista");
         }
     }//GEN-LAST:event_jButtonMatricularActionPerformed
 
+    private void ApenasNumerosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApenasNumerosKeyTyped
+        char entrada = evt.getKeyChar();
+        if (!(Character.isDigit(entrada))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ApenasNumerosKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonMatricular;
     private javax.swing.JButton jButtonPesquisar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JCheckBox jCheckBoxAno;
     private javax.swing.JCheckBox jCheckBoxDisciplina;
     private javax.swing.JCheckBox jCheckBoxSemestre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableListarTurmas;
     private javax.swing.JTextField jTextFieldAno;
@@ -285,24 +343,16 @@ public class JanelaRealizarMatricula extends javax.swing.JFrame {
     }
 
     private Object[] adicionarLinha(Turma turma) {
-        List<Object> linha = new ArrayList<>();
 
-        linha.add(turma.getId());
-        linha.add(turma.getSemestre());
-        linha.add(turma.getAno());
-        linha.add(DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome());
-        linha.add(UsuarioController.pesquisar(turma.getNumProfessor()).getNome());
+        Object[] linha = {
+            turma.getId(),
+            turma.getSemestre(),
+            turma.getAno(),
+            DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome(),
+            UsuarioController.pesquisar(turma.getNumProfessor()).getNome()
+        };
 
-        return linha.toArray();
-    }
-
-    private int paraNumero(String text) {
-        try {
-            int numero = Integer.valueOf(text);
-            return numero;
-        } catch (NumberFormatException e) {
-            return 0;
-        }
+        return linha;
     }
 
     private void matricular(Matricula matricula) {

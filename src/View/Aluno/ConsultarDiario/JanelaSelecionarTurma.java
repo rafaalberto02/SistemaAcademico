@@ -31,6 +31,7 @@ public class JanelaSelecionarTurma extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Selecionar Turma");
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -39,7 +40,7 @@ public class JanelaSelecionarTurma extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("SELECIONE A TURMA");
 
-        jTableTurmas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jTableTurmas.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTableTurmas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -125,7 +126,7 @@ public class JanelaSelecionarTurma extends javax.swing.JFrame {
             int idTurma = (int) jTableTurmas.getValueAt(jTableTurmas.getSelectedRow(), 0);
             Matricula matricula = MatriculaController.pesquisar(usuario.getNumero(), idTurma);
 
-            new JanelaInformacoesDiario(matricula).setVisible(true);
+            new JanelaDadosDiario(matricula).setVisible(true);
         }
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 

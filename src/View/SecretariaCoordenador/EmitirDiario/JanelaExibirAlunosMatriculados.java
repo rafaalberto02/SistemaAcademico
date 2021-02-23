@@ -4,7 +4,6 @@ import Controller.MatriculaController;
 import Controller.UsuarioController;
 import Model.Matricula;
 import Model.Turma;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,9 +23,14 @@ public class JanelaExibirAlunosMatriculados extends javax.swing.JFrame {
         jTableAlunos = new javax.swing.JTable();
         jButtonFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alunos Matriculados");
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("ALUNOS MATRICULADOS");
 
         jTableAlunos.setModel(new javax.swing.table.DefaultTableModel(
@@ -34,7 +38,7 @@ public class JanelaExibirAlunosMatriculados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero", "Nome", "Nota 1", "Nota 2", "Exame", "Faltas", "Aprovado"
+                "Numero", "Nome", "Nota 1", "Nota 2", "Exame", "Faltas", "Situação"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -48,7 +52,9 @@ public class JanelaExibirAlunosMatriculados extends javax.swing.JFrame {
         jTableAlunos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableAlunos);
 
+        jButtonFechar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonFechar.setText("Fechar");
+        jButtonFechar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFecharActionPerformed(evt);
@@ -68,21 +74,21 @@ public class JanelaExibirAlunosMatriculados extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonFechar)
+                .addComponent(jButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonFechar)
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         pack();
@@ -112,27 +118,18 @@ public class JanelaExibirAlunosMatriculados extends javax.swing.JFrame {
     }
 
     private Object[] adicionarLinha(Matricula matricula) {
-        List<Object> linha = new ArrayList<>();
+        Object exame = (matricula.getExame() == -1) ? "Necessário realizar" : matricula.getExame();
+        Object situacao = (matricula.isAprovado()) ? "Aprovado" : "Reprovado";
 
-        linha.add(matricula.getNumAluno());
-        linha.add(UsuarioController.pesquisar(matricula.getNumAluno()).getNome());
-        linha.add(matricula.getNota1());
-        linha.add(matricula.getNota2());
+        Object[] linha = {
+            matricula.getNumAluno(),
+            UsuarioController.pesquisar(matricula.getNumAluno()).getNome(),
+            matricula.getNota1(),
+            matricula.getNota2(),
+            exame,
+            situacao
+        };
 
-        if (matricula.getExame() == -1) {
-            linha.add("Necessáio realizar");
-        } else {
-            linha.add(matricula.getExame());
-        }
-
-        linha.add(matricula.getFaltas());
-
-        if (matricula.isAprovado()) {
-            linha.add("Sim");
-        } else {
-            linha.add("Não");
-        }
-
-        return linha.toArray();
+        return linha;
     }
 }

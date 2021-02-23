@@ -4,7 +4,6 @@ import Controller.UsuarioController;
 import Model.Aluno;
 import Model.Professor;
 import Model.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,6 +11,7 @@ public class JanelaListarUsuarios extends javax.swing.JFrame {
 
     public JanelaListarUsuarios() {
         initComponents();
+        listar();
     }
 
     @SuppressWarnings("unchecked")
@@ -20,15 +20,13 @@ public class JanelaListarUsuarios extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListarUsuarios = new javax.swing.JTable();
-        jButtonListar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lista de Clientes");
 
+        jTableListarUsuarios.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTableListarUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -47,28 +45,17 @@ public class JanelaListarUsuarios extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableListarUsuarios);
 
-        jButtonListar.setText("Listar");
-        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListarActionPerformed(evt);
-            }
-        });
-
+        jButtonVoltar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVoltarActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setText("TABELA");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel2.setText("DE");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel3.setText("USUARIOS");
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
+        jLabel4.setText("LISTA DE USUÁRIOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,33 +67,22 @@ public class JanelaListarUsuarios extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonListar)
-                .addGap(96, 96, 96)
-                .addComponent(jButtonVoltar)
+                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(119, 119, 119))
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonListar)
-                    .addComponent(jButtonVoltar))
+                .addComponent(jLabel4)
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jButtonVoltar)
                 .addGap(12, 12, 12))
         );
 
@@ -118,7 +94,35 @@ public class JanelaListarUsuarios extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
-    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonVoltar;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableListarUsuarios;
+    // End of variables declaration//GEN-END:variables
+
+    private Object[] adicionarLinha(Usuario usuario) {
+        Object curso = "";
+        Object titulacao = "";
+
+        if (usuario instanceof Aluno aluno) {
+            curso = aluno.getCurso();
+        } else if (usuario instanceof Professor professor) {
+            titulacao = professor.getTitulacao();
+        }
+
+        Object[] linha = {
+            usuario.getNumero(),
+            usuario.getNome(),
+            usuario.getPerfil(),
+            curso,
+            titulacao
+        };
+
+        return linha;
+    }
+
+    private void listar() {
         DefaultTableModel tableModel = (DefaultTableModel) jTableListarUsuarios.getModel();
         tableModel.setRowCount(0);
         List<Usuario> usuarios = UsuarioController.listar();
@@ -126,34 +130,5 @@ public class JanelaListarUsuarios extends javax.swing.JFrame {
         usuarios.forEach(usuario -> {
             tableModel.addRow(adicionarLinha(usuario));
         });
-    }//GEN-LAST:event_jButtonListarActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonListar;
-    private javax.swing.JButton jButtonVoltar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableListarUsuarios;
-    // End of variables declaration//GEN-END:variables
-
-    private Object[] adicionarLinha(Usuario usuario) {
-        List<Object> linha = new ArrayList<>();
-
-        linha.add(usuario.getNumero());
-        linha.add(usuario.getNome());
-        linha.add(usuario.getPerfil());
-
-        if (usuario instanceof Aluno) {
-            Aluno aluno = (Aluno) usuario;
-            linha.add(aluno.getCurso());
-        } else if (usuario instanceof Professor) {
-            linha.add("");
-            Professor professor = (Professor) usuario;
-            linha.add(professor.getTitulacao());
-        }
-
-        return linha.toArray();
     }
 }

@@ -62,7 +62,7 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabelMenuUsuario.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabelMenuUsuario.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabelMenuUsuario.setText("MENU COORDENADOR");
 
         jMenuDisciplinas.setText("Disciplinas");
@@ -196,16 +196,16 @@ public class MenuOpcoesSecretariaCoordernador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
+                .addContainerGap(276, Short.MAX_VALUE)
                 .addComponent(jLabelMenuUsuario)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addContainerGap()
                 .addComponent(jLabelMenuUsuario)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addContainerGap(543, Short.MAX_VALUE))
         );
 
         pack();

@@ -3,11 +3,11 @@ package View.Aluno.ConsultarDiario;
 import Controller.UsuarioController;
 import Model.Matricula;
 
-public class JanelaInformacoesDiario extends javax.swing.JFrame {
+public class JanelaDadosDiario extends javax.swing.JFrame {
 
     private final Matricula matricula;
 
-    public JanelaInformacoesDiario(Matricula matricula) {
+    public JanelaDadosDiario(Matricula matricula) {
         initComponents();
         this.matricula = matricula;
         preencher();
@@ -40,6 +40,7 @@ public class JanelaInformacoesDiario extends javax.swing.JFrame {
         jLabelFaltas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Dados do Diário");
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -277,16 +278,14 @@ public class JanelaInformacoesDiario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonCancelar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 296, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCancelar)
+                            .addComponent(jLabel1))
+                        .addGap(0, 311, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(300, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(316, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

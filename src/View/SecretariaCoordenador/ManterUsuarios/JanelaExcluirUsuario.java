@@ -26,64 +26,60 @@ public class JanelaExcluirUsuario extends javax.swing.JFrame {
         jTextFieldLogin = new javax.swing.JTextField();
         jLabelPerfil = new javax.swing.JLabel();
         jTextFieldPerfil = new javax.swing.JTextField();
-        panBotaoCadastrarAluno = new javax.swing.JPanel();
-        jButtonLimpar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
-        jButtonConsultar = new javax.swing.JButton();
-        jButtonDeletar = new javax.swing.JButton();
         jLabelCursoTitulacao = new javax.swing.JLabel();
         jTextFieldCursoTitulacao = new javax.swing.JTextField();
+        jButtonDeletar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
 
         jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CADASTRAR ALUNO");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("EXCLUIR USUARIO");
 
-        jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelNumero.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabelNumero.setText("NUMERO");
 
-        jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextFieldNumero.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jTextFieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApenasNumeroKeyTyped(evt);
+            }
+        });
+
+        jLabelNome.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabelNome.setText("NOME");
 
         jTextFieldNome.setEditable(false);
+        jTextFieldNome.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
-        jLabelLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelLogin.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabelLogin.setText("LOGIN");
 
         jTextFieldLogin.setEditable(false);
+        jTextFieldLogin.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
-        jLabelPerfil.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelPerfil.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabelPerfil.setText("PERFIL");
 
         jTextFieldPerfil.setEditable(false);
+        jTextFieldPerfil.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
-        panBotaoCadastrarAluno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabelCursoTitulacao.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabelCursoTitulacao.setText("CURSO");
+        jLabelCursoTitulacao.setEnabled(false);
 
-        jButtonLimpar.setText("LIMPAR");
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
-            }
-        });
+        jTextFieldCursoTitulacao.setEditable(false);
+        jTextFieldCursoTitulacao.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jTextFieldCursoTitulacao.setEnabled(false);
 
-        jButtonCancelar.setText("CANCELAR");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-
-        jButtonConsultar.setText("CONSULTAR");
-        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarActionPerformed(evt);
-            }
-        });
-
+        jButtonDeletar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonDeletar.setText("DELETAR");
+        jButtonDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDeletar.setEnabled(false);
         jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,74 +87,73 @@ public class JanelaExcluirUsuario extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panBotaoCadastrarAlunoLayout = new javax.swing.GroupLayout(panBotaoCadastrarAluno);
-        panBotaoCadastrarAluno.setLayout(panBotaoCadastrarAlunoLayout);
-        panBotaoCadastrarAlunoLayout.setHorizontalGroup(
-            panBotaoCadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBotaoCadastrarAlunoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonDeletar)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonConsultar)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonLimpar)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCancelar)
-                .addContainerGap())
-        );
-        panBotaoCadastrarAlunoLayout.setVerticalGroup(
-            panBotaoCadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBotaoCadastrarAlunoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panBotaoCadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonConsultar)
-                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCancelar)
-                    .addComponent(jButtonDeletar))
-                .addContainerGap())
-        );
+        jButtonConsultar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jButtonConsultar.setText("CONSULTAR");
+        jButtonConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
-        jLabelCursoTitulacao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelCursoTitulacao.setText("CURSO");
-        jLabelCursoTitulacao.setEnabled(false);
+        jButtonLimpar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jButtonLimpar.setText("LIMPAR");
+        jButtonLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
-        jTextFieldCursoTitulacao.setEditable(false);
-        jTextFieldCursoTitulacao.setEnabled(false);
+        jButtonCancelar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jButtonCancelar.setText("CANCELAR");
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 182, Short.MAX_VALUE)
+                .addGap(303, 303, 303)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCursoTitulacao)
-                            .addComponent(jTextFieldCursoTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabelLogin)
-                                .addComponent(jLabelNome)
-                                .addComponent(jLabelPerfil)
-                                .addComponent(jLabelNumero)
-                                .addComponent(jTextFieldNumero)
-                                .addComponent(jTextFieldNome)
-                                .addComponent(jTextFieldLogin)
-                                .addComponent(jTextFieldPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel1)))
-                        .addGap(139, 139, 139))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(panBotaoCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174))))
+                    .addComponent(jLabelCursoTitulacao)
+                    .addComponent(jTextFieldCursoTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelLogin)
+                        .addComponent(jLabelNome)
+                        .addComponent(jLabelPerfil)
+                        .addComponent(jLabelNumero)
+                        .addComponent(jTextFieldNumero)
+                        .addComponent(jTextFieldNome)
+                        .addComponent(jTextFieldLogin)
+                        .addComponent(jTextFieldPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(156, 156, 156))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(43, 43, 43)
                 .addComponent(jLabelNumero)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,9 +173,13 @@ public class JanelaExcluirUsuario extends javax.swing.JFrame {
                 .addComponent(jLabelCursoTitulacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCursoTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(panBotaoCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGap(84, 84, 84)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeletar)
+                    .addComponent(jButtonConsultar)
+                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCancelar))
+                .addContainerGap())
         );
 
         pack();
@@ -215,6 +214,13 @@ public class JanelaExcluirUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
+    private void ApenasNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApenasNumeroKeyTyped
+        char entrada = evt.getKeyChar();
+        if (!(Character.isDigit(entrada))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ApenasNumeroKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonConsultar;
@@ -232,7 +238,6 @@ public class JanelaExcluirUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JTextField jTextFieldPerfil;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JPanel panBotaoCadastrarAluno;
     // End of variables declaration//GEN-END:variables
 
     private void limpar() {

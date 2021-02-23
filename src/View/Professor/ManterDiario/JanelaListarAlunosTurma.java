@@ -5,7 +5,6 @@ import Controller.UsuarioController;
 import Model.Matricula;
 import Model.Turma;
 import Model.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -34,26 +33,25 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
         jTableListarAlunos = new javax.swing.JTable();
         jButtonSelecionar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jRadioButtonNotas = new javax.swing.JRadioButton();
         jRadioButtonFaltas = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Selecionar Aluno");
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("NOTAS");
 
         jTableListarAlunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Numero", "Nome", "Nota 1", "Nota 2", "Exame", "Faltas"
@@ -69,6 +67,7 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableListarAlunos);
 
+        jButtonSelecionar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonSelecionar.setText("Selecionar");
         jButtonSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +75,7 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancelar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,15 +84,46 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
         });
 
         buttonGroupNotasFaltas.add(jRadioButtonNotas);
-        jRadioButtonNotas.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jRadioButtonNotas.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jRadioButtonNotas.setText("Notas");
 
         buttonGroupNotasFaltas.add(jRadioButtonFaltas);
-        jRadioButtonFaltas.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jRadioButtonFaltas.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jRadioButtonFaltas.setText("Faltas");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel2.setText("SELECIONE O QUE DESEJA MODIFICAR");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(jRadioButtonNotas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addComponent(jRadioButtonFaltas)
+                .addContainerGap(62, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel2)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonFaltas)
+                    .addComponent(jRadioButtonNotas))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(15, 15, 15)
+                    .addComponent(jLabel2)
+                    .addContainerGap(61, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,49 +132,41 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonSelecionar)
-                        .addGap(202, 202, 202)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonCancelar)
-                        .addGap(216, 216, 216))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jRadioButtonNotas)
-                        .addGap(89, 89, 89)
-                        .addComponent(jRadioButtonFaltas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonNotas)
-                    .addComponent(jRadioButtonFaltas))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSelecionar)
-                    .addComponent(jButtonCancelar))
-                .addGap(22, 22, 22))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCancelar)
+                            .addComponent(jButtonSelecionar))
+                        .addContainerGap())))
         );
 
         pack();
@@ -155,9 +178,10 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
-        if (jTableListarAlunos.getSelectedRow() != -1) {
-            int linha = jTableListarAlunos.getSelectedRow();
-            int numero = (int) jTableListarAlunos.getValueAt(linha, 0);
+        if (jTableListarAlunos.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "E necessario selecionar um aluno da lista");
+        } else {
+            int numero = (int) jTableListarAlunos.getValueAt(jTableListarAlunos.getSelectedRow(), 0);
 
             Matricula matricula = MatriculaController.pesquisar(numero, turma.getId());
 
@@ -166,9 +190,6 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
             } else {
                 new JanelaAlterarFalta(matricula).setVisible(true);
             }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "E necessario selecionar um aluno da lista");
         }
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
@@ -182,6 +203,7 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSelecionar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButtonFaltas;
     private javax.swing.JRadioButton jRadioButtonNotas;
     private javax.swing.JScrollPane jScrollPane1;
@@ -200,17 +222,17 @@ public class JanelaListarAlunosTurma extends javax.swing.JFrame {
     }
 
     private Object[] adicionarLinha(Matricula matricula) {
-        List<Object> linha = new ArrayList<>();
-
         Usuario usuario = UsuarioController.pesquisar(matricula.getNumAluno());
 
-        linha.add(matricula.getNumAluno());
-        linha.add(usuario.getNome());
-        linha.add(matricula.getNota1());
-        linha.add(matricula.getNota2());
-        linha.add(matricula.getExame());
-        linha.add(matricula.getFaltas());
+        Object[] linha = {
+            matricula.getNumAluno(),
+            usuario.getNome(),
+            matricula.getNota1(),
+            matricula.getNota2(),
+            matricula.getExame(),
+            matricula.getFaltas()
+        };
 
-        return linha.toArray();
+        return linha;
     }
 }

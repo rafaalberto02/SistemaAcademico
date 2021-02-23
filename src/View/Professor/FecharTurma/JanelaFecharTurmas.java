@@ -34,11 +34,13 @@ public class JanelaFecharTurmas extends javax.swing.JFrame {
         jButtonSelecionar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Selecionar Turma");
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("FECHAR TURMA");
 
+        jTableListarTurmas.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTableListarTurmas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -57,16 +59,18 @@ public class JanelaFecharTurmas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableListarTurmas);
 
-        jButtonSelecionar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jButtonSelecionar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonSelecionar.setText("Selecionar");
+        jButtonSelecionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSelecionarActionPerformed(evt);
             }
         });
 
-        jButtonCancelar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jButtonCancelar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -77,29 +81,30 @@ public class JanelaFecharTurmas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jButtonSelecionar)
+                        .addGap(283, 283, 283)
+                        .addComponent(jButtonCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jButtonSelecionar)
-                .addGap(283, 283, 283)
-                .addComponent(jButtonCancelar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(48, 48, 48)
+                .addGap(57, 57, 57)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSelecionar)
                     .addComponent(jButtonCancelar))
@@ -115,14 +120,13 @@ public class JanelaFecharTurmas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
-        if (jTableListarTurmas.getSelectedRow() != -1) {
-            int linha = jTableListarTurmas.getSelectedRow();
-            int numero = (int) jTableListarTurmas.getValueAt(linha, 0);
+        if (jTableListarTurmas.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "É necessario selecionar uma turma da lista");
+        } else {
+            int numero = (int) jTableListarTurmas.getValueAt(jTableListarTurmas.getSelectedRow(), 0);
             Turma turma = TurmaController.pesquisar(numero);
 
             fecharTurma(turma);
-        } else {
-            JOptionPane.showMessageDialog(null, "E necessario selecionar uma turma da lista");
         }
 
         listar(FILTRO);
@@ -148,14 +152,14 @@ public class JanelaFecharTurmas extends javax.swing.JFrame {
     }
 
     private Object[] adicionarLinha(Turma turma) {
-        List<Object> linha = new ArrayList<>();
+        Object[] linha = {
+            turma.getId(),
+            turma.getSemestre(),
+            turma.getAno(),
+            DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome()
+        };
 
-        linha.add(turma.getId());
-        linha.add(turma.getSemestre());
-        linha.add(turma.getAno());
-        linha.add(DisciplinaController.pesquisarPorCodigo(turma.getCodDisciplina()).getNome());
-
-        return linha.toArray();
+        return linha;
     }
 
     private void fecharTurma(Turma turma) {

@@ -7,11 +7,7 @@ import javax.swing.JOptionPane;
 
 public class JanelaAlterarNota extends javax.swing.JFrame {
 
-    private Matricula matricula;
-
-    public JanelaAlterarNota() {
-        initComponents();
-    }
+    private final Matricula matricula;
 
     public JanelaAlterarNota(Matricula matricula) {
         initComponents();
@@ -37,59 +33,68 @@ public class JanelaAlterarNota extends javax.swing.JFrame {
         jButtonEditar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Notas");
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("NOTAS");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel2.setText("Numero:");
 
-        jLabelNumero.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabelNumero.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel5.setText("Nome:");
 
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel7.setText("Nota 1:");
 
-        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel9.setText("Nota 2:");
 
-        jLabel11.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel11.setText("Exame:");
 
-        jTextFieldNota1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jTextFieldNota1.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jTextFieldNota1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ApenasNumerosKeyTyped(evt);
             }
         });
 
-        jTextFieldNota2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jTextFieldNota2.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jTextFieldNota2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ApenasNumerosKeyTyped(evt);
             }
         });
 
-        jTextFieldExame.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jTextFieldExame.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jTextFieldExame.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ApenasNumerosKeyTyped(evt);
             }
         });
 
-        jLabelNome.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabelNome.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
+        jButtonEditar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonEditar.setText("Editar");
+        jButtonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditarActionPerformed(evt);
             }
         });
 
+        jButtonCancelar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -101,7 +106,13 @@ public class JanelaAlterarNota extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(233, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(231, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel2)
@@ -116,27 +127,21 @@ public class JanelaAlterarNota extends javax.swing.JFrame {
                     .addComponent(jTextFieldNota1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(216, 216, 216))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(321, 321, 321)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCancelar)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(104, 104, 104)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabelNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(116, 116, 116)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
@@ -144,20 +149,20 @@ public class JanelaAlterarNota extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldNota1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                    .addComponent(jTextFieldNota1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextFieldNota2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                    .addComponent(jTextFieldNota2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextFieldExame, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-                .addGap(114, 114, 114)
+                    .addComponent(jTextFieldExame, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditar)
                     .addComponent(jButtonCancelar))
-                .addGap(70, 70, 70))
+                .addContainerGap())
         );
 
         pack();
